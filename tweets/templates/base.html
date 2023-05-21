@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="{% static 'favicon.png' %}" type="image/x-icon">
+</head>
+<body>
+    {% load static %}
+    <script>
+        function playClickSound() {
+            const audio = new Audio("{% static 'click.mp3' %}");
+            audio.play();
+        }
+    </script>
+
+    <nav>
+        <ul>
+            <li><button onclick="playClickSound()">Home</button></li>
+            <li><button onclick="playClickSound()">Explore</button></li>
+            <li><button onclick="playClickSound()">Profile</button></li>
+            <li><button onclick="playClickSound()">Settings</button></li>
+        </ul>
+    </nav>
+  <h1>{{ title }}</h1>
+  {% block content %}
+  {% endblock %}
+</body>
+</html>

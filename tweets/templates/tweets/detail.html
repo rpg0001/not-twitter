@@ -1,0 +1,23 @@
+{% extends '../base.html' %}
+{% block content %}
+
+    <a href="/tweets">Back</a>
+
+    <!-- the tweet -->
+    {% include "tweets/tweet.html" %}
+
+    <!-- comments -->
+    {% for comment in tweet.comment_set.all %}
+    <div class="tweet comment-box" style="margin-left: 50px">
+        <p>
+            <strong>Angry Person</strong>
+            <small>@tinylittleman | {{ comment.date }}</small>
+        </p>
+
+        <p>{{ comment }}</p>
+    </div>
+
+
+    {% endfor %}
+
+{% endblock %}

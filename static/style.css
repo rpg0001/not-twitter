@@ -1,0 +1,64 @@
+div.tweet {
+    border: solid 1px grey;
+    margin: 20px;
+    padding: 5px
+}
+
+nav button {
+    border-style: outset;
+    border-color: lightgrey;
+}
+
+nav button:hover {
+    cursor: pointer;
+}
+
+nav li {
+    display: inline;
+}
+
+nav button:active {
+    border-style: inset;
+}
+
+button.tweet {
+    background: blue;
+    color: white;
+    border-style: outset;
+    border-color: blue;
+}
+
+button.tweet:hover {
+    cursor: pointer;
+}
+
+button.tweet:active {
+    border-style: inset;
+}
+
+a.tweet-card {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    opacity: 60%;
+}
+
+form button {
+    background: none;
+    border: none;
+}
+
+.comment:hover {
+    color: blue;
+    cursor: crosshair;
+}
+
+.retweet:hover {
+    color: mediumseagreen;
+}
+
+.like:hover {
+    color: red;
+}
