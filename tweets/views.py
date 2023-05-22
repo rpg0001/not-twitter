@@ -30,6 +30,7 @@ def like(request, tweet_id):
         liked_tweet = get_object_or_404(Tweet, pk=tweet_id)
         liked_tweet.likes = liked_tweet.likes + 1
         liked_tweet.save()
+        print(request.POST["path"])
         return HttpResponseRedirect(request.POST["path"])
     else:
         return HttpResponseRedirect("/tweets")
@@ -37,7 +38,8 @@ def like(request, tweet_id):
 
 def comment(request, tweet_id):
     if request.method == "POST":
-        new_comment = Comment(tweet=tweet_id, text=request.POST["text"])
+        the_tweet = get_object_or_404(Tweet, pk=tweet_id)
+        new_comment = Comment(tweet=the_tweet, text=request.POST["text"])
         new_comment.save()
         return HttpResponseRedirect(request.POST["path"])
     else:

@@ -1,40 +1,39 @@
+
 div.tweet {
     border: solid 1px grey;
     margin: 20px;
     padding: 5px
 }
 
-nav button {
+button {
     border-style: outset;
     border-color: lightgrey;
 }
 
-nav button:hover {
+button:active {
+    border-style: inset;
+}
+
+button:hover {
     cursor: pointer;
+    opacity: 80%;
 }
 
 nav li {
     display: inline;
 }
 
-nav button:active {
-    border-style: inset;
+button a {
+    color: black;
+    text-decoration: none;
 }
 
 button.tweet {
     background: blue;
     color: white;
-    border-style: outset;
     border-color: blue;
 }
 
-button.tweet:hover {
-    cursor: pointer;
-}
-
-button.tweet:active {
-    border-style: inset;
-}
 
 a.tweet-card {
     color: black;
@@ -45,20 +44,35 @@ a:hover {
     opacity: 60%;
 }
 
-form button {
-    background: none;
-    border: none;
-}
-
-.comment:hover {
+.comment {
     color: blue;
-    cursor: crosshair;
 }
 
-.retweet:hover {
+.retweet {
     color: mediumseagreen;
 }
 
-.like:hover {
+.like {
     color: red;
 }
+
+.comment:hover {
+    background: blue;
+    color: white;
+}
+
+.retweet:hover {
+    background: mediumseagreen;
+    color: white;
+}
+
+.like:hover {
+    background: red;
+    color: white;
+}
+
+
+
+
+
+

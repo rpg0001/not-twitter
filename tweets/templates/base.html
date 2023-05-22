@@ -5,8 +5,6 @@
     <title>{{ title }}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="{% static 'favicon.png' %}" type="image/x-icon">
 </head>
 <body>
@@ -20,7 +18,7 @@
 
     <nav>
         <ul>
-            <li><button onclick="playClickSound()">Home</button></li>
+            <li><button onclick="playClickSound()"><a href="/tweets">Home</a></button></li>
             <li><button onclick="playClickSound()">Explore</button></li>
             <li><button onclick="playClickSound()">Profile</button></li>
             <li><button onclick="playClickSound()">Settings</button></li>

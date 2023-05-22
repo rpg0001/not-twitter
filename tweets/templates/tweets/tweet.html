@@ -8,26 +8,8 @@
         </p>
 
         <p>{{ tweet }}</p>
+
+        <p>Comments: {{ tweet.comment_set.count }} Retweets: 0 Likes: {{ tweet.likes }} </p>
     </a>
 
-    <!-- comments -->
-    <form style="display:inline" action="/tweets/comment/{{tweet.id}}/" method="post">
-        {%csrf_token%}
-        <input value="{{request.path}}" name="path" hidden>
-        <button type="submit" class="comment"style="cursor:pointer"><i class="fa-solid fa-comment"></i>{{tweet.comments}}</button>
-    </form>
-
-    <!-- retweets -->
-    <form style="display:inline" action="/tweets/retweet/{{tweet.id}}/" method="post">
-        {%csrf_token%}
-        <input value="{{request.path}}" name="path" hidden>
-        <button type="submit" class="retweet"style="cursor:pointer"><i class="fa-solid fa-retweet"></i>{{tweet.retweets}}</button>
-    </form>
-
-    <!-- likes -->
-    <form style="display:inline" action="/tweets/like/{{tweet.id}}/" method="post">
-        {%csrf_token%}
-        <input value="{{request.path}}" name="path" hidden>
-        <button type="submit" class="like" style="cursor:pointer"><i class="fa-solid fa-heart"></i>{{tweet.likes}}</button>
-    </form>
 </div>
