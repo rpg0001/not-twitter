@@ -16,51 +16,54 @@
         }
     </script>
 
-    <!-- comments -->
-    <button type="submit" id="show-comment" class="comment" onclick="showForm()">Comment</button>
+    <div class="fun-zone">
+        <!-- comments -->
+        <button type="submit" id="show-comment" class="comment" onclick="showForm()">Comment</button>
 
 
-    <!-- retweets -->
-    <form style="display:inline" action="/tweets/retweet/{{tweet.id}}/" method="post">
-        {%csrf_token%}
-        <input value="{{request.path}}" name="path" hidden>
-        <button type="submit" class="retweet" onclick="playClickSound()">Retweet</button>
-    </form>
+        <!-- retweets -->
+        <form style="display:inline" action="/tweets/retweet/{{tweet.id}}/" method="post">
+            {%csrf_token%}
+            <input value="{{request.path}}" name="path" hidden>
+            <button type="submit" class="retweet" onclick="playClickSound()">Retweet</button>
+        </form>
 
-    <!-- likes -->
-    <form style="display:inline" action="/tweets/like/{{tweet.id}}/" method="post">
-        {%csrf_token%}
-        <input value="{{request.path}}" name="path" hidden>
-        <button type="submit" class="like" onclick="playClickSound()">Like</button>
-    </form>
+        <!-- likes -->
+        <form style="display:inline" action="/tweets/like/{{tweet.id}}/" method="post">
+            {%csrf_token%}
+            <input value="{{request.path}}" name="path" hidden>
+            <button type="submit" class="like" onclick="playClickSound()">Like</button>
+        </form>
 
-    <br>
+        <br>
 
-    <!-- post comment -->
+        <!-- post comment -->
 
-    <form action="/tweets/comment/{{tweet.id}}/" method="post" id="comment-form" style="display:none">
-        {%csrf_token%}
-        <input value="{{request.path}}" name="path" hidden>
-        <input type="text" name="text"></input>
-        <button type="submit" class="comment" onclick="playClickSound()">Post comment</button>
-    </form>
+        <form action="/tweets/comment/{{tweet.id}}/" method="post" id="comment-form" style="display:none">
+            {%csrf_token%}
+            <input value="{{request.path}}" name="path" hidden>
+            <input type="text" id="comment-text" name="text"></input>
+            <button type="submit" class="comment" onclick="playClickSound()">Post comment</button>
+        </form>
 
 
-    <!-- view comments -->
-    {% for comment in tweet.comment_set.all %}
-    <div class="tweet comment-box" style="margin-left: 50px">
-        <p>
-            <strong>Angry Person</strong>
-            <small>@tinylittleman | {{ comment.date }}</small>
-        </p>
+        <!-- view comments -->
+        {% for comment in tweet.comment_set.all %}
+            <div class="tweet comment-box" style="margin-left: 50px">
+                <p>
+                    <strong>Angry Person</strong>
+                    <small>@tinylittleman | {{ comment.date }}</small>
+                </p>
 
-        <p>{{ comment }}</p>
+                <p>{{ comment }}</p>
+            </div>
+        {% endfor %}
+
+        {% if tweet.comment_set.count <= 0 %}
+            <p> No comments found :( </p>
+        {% endif %}
+
     </div>
-
-
-
-
-    {% endfor %}
 
     <script>
         function showForm() {

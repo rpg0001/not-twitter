@@ -71,6 +71,17 @@ a:hover {
     color: white;
 }
 
+.fun-zone {
+    margin: 20px;
+}
+
+#comment-text {
+    display: flex;
+    height: 100px;
+    width: 400px;
+    margin: 10px;
+    margin-left: 0;
+}
 
 
 
