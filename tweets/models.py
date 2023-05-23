@@ -25,4 +25,4 @@ class Comment(models.Model):
         return self.text
 
     class Meta:
-        ordering = ["date"]
+        ordering = ["-date"]

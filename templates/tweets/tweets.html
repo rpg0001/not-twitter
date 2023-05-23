@@ -1,31 +1,26 @@
 {% extends '../base.html' %}
 {% block content %}
-{% load static %}
-    <script>
-        function playClickSound() {
-            const audio = new Audio("{% static 'click.mp3' %}");
-            audio.play();
-        }
-    </script>
+
 <!-- post new tweet -->
-    <h3>Post a Tweet</h3>
-    <form action="/tweets/post/" method="post">
+<section>
+    <h3 class="subtitle">Post a Tweet</h3>
+    <form action="{% url 'post' %}" method="post">
         {%csrf_token%}
         <input type="text" name="text" id="text"></input>
-
-        <button type="submit" class="tweet" onclick="playClickSound()">Tweet</button>
+        <button type="submit" class="tweet">Tweet</button>
     </form>
+</section>
 
+<section>
 <!-- view all previous tweets -->
-    <h3>View all Tweets</h3>
+    <h3 class="subtitle">View all Tweets</h3>
       {% if tweets %}
           {% for tweet in tweets %}
-
                 {% include "tweets/tweet.html" %}
-
           {% endfor %}
       {% else %}
           <p>No tweets found :(</p>
       {% endif %}
+</section>
 
 {% endblock %}
