@@ -14,8 +14,10 @@ from django.views.generic import DetailView
 from .forms import UserRegisterForm, UserUpdateForm
 from django.views import View
 
+
 def profile(request):
     return render(request, 'users/profile.html', {'title': 'Profile'})
+
 
 def signup(request):
     if request.method == 'POST':
@@ -67,7 +69,6 @@ def update_account(request):
     else:
         user_form = UserUpdateForm(instance=request.user)
 
-    context = { 'u_form': user_form }
+    context = {'u_form': user_form}
 
     return render(request, 'users/profile_update.html', context)
-

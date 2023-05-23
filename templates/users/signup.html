@@ -2,6 +2,35 @@
 {% block content %}
 
 <p>sign up here</p>
-{{ form }}
+
+<!-- display errors -->
+{% if form.errors %}
+    <ul>
+        {% for field_errors in form.errors.values %}
+            {% for error in field_errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<!-- the sign in form -->
+
+<form method="POST">
+        {% csrf_token %}
+        <label>Username</label>
+        @{{ form.username }}
+        <br>
+        <label>Email</label>
+        {{ form.email }}
+        <br>
+        <label>Password</label>
+        {{ form.password1 }}
+        <br>
+        <label>Confirm password</label>
+        {{ form.password2 }}
+        <br>
+        <button type="submit">Sign up</button>
+</form>
 
 {%endblock%}
