@@ -2,14 +2,13 @@
 {% block content %}
 
 <!-- post new tweet -->
-<section>
     <h3 class="subtitle">Post a Tweet</h3>
     <form action="{% url 'post' %}" method="post">
         {%csrf_token%}
-        <input type="text" name="text" id="text"></input>
-        <button type="submit" class="tweet">Tweet</button>
+        <input class="tweet" type="text" name="text" id="text" placeholder="What's happening?"></input>
+        <br>
+        <button class="main" type="submit">Tweet</button>
     </form>
-</section>
 
 <section>
 <!-- view all previous tweets -->

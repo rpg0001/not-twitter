@@ -6,8 +6,6 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="{% static 'favicon.png' %}" type="image/x-icon">
-    <!-- BULMA -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 
 </head>
 <body>
@@ -15,11 +13,10 @@
     <nav>
         <ul>
             <li><a href="{% url 'tweets' %}">Home</a></li>
-            <li><a href="{% url 'tweets' %}">Explore</a></button></li>
-            <li><a href="{% url 'tweets' %}">Settings</a></button></li>
+            <li><a href="{% url 'tweets' %}">Explore</a></li>
+            <li><a href="{% url 'tweets' %}">Settings</a></li>
 
             &emsp;
-
             {% if user.is_authenticated %}
                 <l1><a href="{% url 'profile' %}">Profile</a></l1>
                  |
@@ -29,13 +26,16 @@
                  |
                 <l1><a href="{% url 'signup' %}">Sign up</a></l1>
             {% endif %}
-            <li></li>
+
         </ul>
+
     </nav>
 
   <h1 class="title">{{ title }}</h1>
 
-  {% block content %}
+    <div class="content">
+        {% block content %}
+    </div>
   {% endblock %}
 
 </body>
