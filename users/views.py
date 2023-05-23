@@ -29,7 +29,7 @@ def signup(request):
             return redirect('signin')
     else:
         form = UserRegisterForm()
-    return render(request, 'users/signup.html', {'form': form})
+    return render(request, 'users/signup.html', {'title': "Sign up", 'form': form})
 
 
 def signin(request):
