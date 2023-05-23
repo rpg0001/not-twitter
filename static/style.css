@@ -1,11 +1,6 @@
 /* general */
 body {
-    font-family: "Trebuchet MS", sans-serif;
-}
-
-div.tweet a {
-    color: black;
-    text-decoration: none;
+    font-family: "Trebuchet MS", "Arial", sans-serif;
 }
 
 @media (max-width: 1000px) {
@@ -55,7 +50,7 @@ nav a:hover {
 }
 
 nav a:active {
-    background: mediumpurple;
+    background: white;
 }
 
 button {
@@ -92,11 +87,25 @@ input {
 
 
 /* tweet */
+small {
+    color: darkgrey;
+}
 
-div.tweet {
+div.tweet-card a {
+    color: black;
+    text-decoration: none;
+}
+
+div.tweet-card {
     border: solid 1px grey;
     margin: 20px;
-    padding: 5px
+    /* top/bottom then left/right */
+    padding: 5px 20px;
+}
+
+div.tweet-card:hover {
+    opacity: 70%;
+    cursor: pointer;
 }
 
 .tweet-buttons {
