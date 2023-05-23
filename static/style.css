@@ -17,12 +17,17 @@ body {
   }
 }
 
-.center {
+.center, form {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
+
+.width-100, form {
+    width: 100%;
+}
+
 
 /* navbar */
 nav {
@@ -65,18 +70,25 @@ button.main:hover {
     cursor: pointer;
 }
 
-input.tweet {
+
+/* forms */
+
+input {
     padding: 10px;
     border: solid 1px lightgrey;
     border-radius: 5px;
+    width: 100%;
 }
 
 
-
-
+/* tweet */
 
 div.tweet {
     border: solid 1px grey;
     margin: 20px;
     padding: 5px
+}
+
+.tweet-buttons {
+    flex-direction: row;
 }

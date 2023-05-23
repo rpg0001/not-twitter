@@ -2,17 +2,17 @@
 {% block content %}
 
 <!-- post new tweet -->
-<div class="post-tweet center">
+<div class="post-tweet center width-100">
     <h3 class="subtitle">Post a Tweet</h3>
-    <form action="{% url 'post' %}" class="center" method="post">
+    <form action="{% url 'post' %}" method="post">
         {%csrf_token%}
-        <input class="tweet" type="text" name="text" id="text" placeholder="What's happening?" required></input>
+        <input class="tweet text-input" type="text" name="text" id="text" placeholder="What's happening?" required></input>
         <br>
         <button class="main" type="submit">Tweet</button>
     </form>
 </div>
 
-<div class="tweets-list center">
+<div class="tweets-list center width-100">
 <!-- view all previous tweets -->
     <h3 class="subtitle">View all Tweets</h3>
       {% if tweets %}

@@ -8,7 +8,8 @@
     {% include "tweets/tweet.html" %}
 
     <!-- comments retweets and likes -->
-    <section>
+
+    <div class="tweet-buttons">
         <!-- toggle comment box -->
         <button id="show-comment" class="comment" onclick="showForm()">Comment</button>
 
@@ -25,21 +26,21 @@
             <input value="{{request.path}}" name="path" hidden>
             <button type="submit" class="like">Like</button>
         </form>
-
+    </div>
         <br>
-
-        <!-- post comment form -->
-        <form action="{% url 'comment' tweet.id %}" method="post" id="comment-form" style="display:none;">
+    <div class="center comments">
+        <!-- post comment form  style="display:none;"-->
+        <form action="{% url 'comment' tweet.id %}" method="post" id="comment-form">
             {%csrf_token%}
             <input value="{{request.path}}" name="path" hidden>
-            <input type="text" id="comment-text" name="text"></input>
+            <input class="text-input" type="text" id="comment-text" name="text"></input>
             <button type="submit" class="comment">Post comment</button>
         </form>
 
 
         <!-- view comments -->
         {% for comment in tweet.comment_set.all %}
-            <div class="tweet comment-box" style="margin-left: 50px">
+            <div class="tweet comment-box">
                 <p> <!-- name, handle, date -->
                     <strong>Angry Person</strong>
                     <small>@tinylittleman | {{ comment.date }}</small>
@@ -55,7 +56,7 @@
             <p> No comments found :( </p>
         {% endif %}
 
-    </section>
+    </div>
 
     <!-- toggle comment box script -->
     <script>
