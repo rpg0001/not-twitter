@@ -18,10 +18,22 @@
 
     <nav>
         <ul>
-            <li><button onclick="playClickSound()"><a href="/tweets">Home</a></button></li>
-            <li><button onclick="playClickSound()">Explore</button></li>
-            <li><button onclick="playClickSound()">Profile</button></li>
-            <li><button onclick="playClickSound()">Settings</button></li>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'index' %}">Explore</a></button></li>
+            <li><a href="{% url 'index' %}">Settings</a></button></li>
+
+            &emsp;
+
+            {% if user.is_authenticated %}
+                <l1><a href="{% url 'profile' %}">Profile</a></l1>
+                 |
+                <l1><a href="{% url 'signout' %}">Logout</a></l1>
+            {% else %}
+                <l1><a href="{% url 'signin' %}">Sign in</a></l1>
+                 |
+                <l1><a href="{% url 'signup' %}">Sign up</a></l1>
+            {% endif %}
+            <li></li>
         </ul>
     </nav>
   <h1>{{ title }}</h1>
