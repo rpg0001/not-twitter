@@ -9,28 +9,29 @@
 
     <!-- comments retweets and likes -->
 
-    <div class="tweet-buttons">
+    <div class="tweet-buttons center">
         <!-- toggle comment box -->
-        <button id="show-comment" class="comment" onclick="showForm()">Comment</button>
+        <button id="show-comment" class="comment" onclick="showForm()"><i class="fa-solid fa-comment"></i></button>
 
         <!-- retweet button -->
-        <form style="display:inline" action="" method="post">
+        <form action="" method="post">
             {%csrf_token%}
             <input value="{{request.path}}" name="path" hidden>
-            <button type="submit" class="retweet">Retweet</button>
+            <button type="submit" class="retweet"><i class="fa-solid fa-retweet"></i></button>
         </form>
 
         <!-- like button -->
-        <form style="display:inline" action="{% url 'like' tweet.id %}" method="post">
+        <form action="{% url 'like' tweet.id %}" method="post">
             {%csrf_token%}
             <input value="{{request.path}}" name="path" hidden>
-            <button type="submit" class="like">Like</button>
+            <button type="submit" class="like"><i class="fa-solid fa-heart"></i></button>
         </form>
     </div>
         <br>
+
     <div class="center comments">
-        <!-- post comment form  style="display:none;"-->
-        <form action="{% url 'comment' tweet.id %}" method="post" id="comment-form">
+        <!-- post comment form  -->
+        <form action="{% url 'comment' tweet.id %}" method="post" id="comment-form" style="display:none;">
             {%csrf_token%}
             <input value="{{request.path}}" name="path" hidden>
             <input class="text-input" type="text" id="comment-text" name="text"></input>

@@ -7,10 +7,11 @@
     <form action="{% url 'post' %}" method="post">
         {%csrf_token%}
         <input class="tweet text-input" type="text" name="text" id="text" placeholder="What's happening?" required></input>
-        <br>
         <button class="main" type="submit">Tweet</button>
     </form>
 </div>
+
+<br><br>
 
 <div class="tweets-list center width-100">
 <!-- view all previous tweets -->

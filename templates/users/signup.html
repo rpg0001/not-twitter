@@ -1,7 +1,7 @@
 {% extends '../base.html' %}
 {% block content %}
 
-<p>sign up here</p>
+<p>Create a new account</p>
 
 <!-- display errors -->
 {% if form.errors %}
@@ -19,7 +19,7 @@
 <form method="POST">
         {% csrf_token %}
         <label>Username</label>
-        @{{ form.username }}
+        {{ form.username }}
         <br>
         <label>Email</label>
         {{ form.email }}

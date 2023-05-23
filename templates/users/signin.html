@@ -1,7 +1,7 @@
 {% extends '../base.html' %}
 {% block content %}
 
-<p>sign in here</p>
+<p>Sign in with an existing account</p>
 
 <form action="{% url 'signin' %}" method="POST">
     {%csrf_token%}

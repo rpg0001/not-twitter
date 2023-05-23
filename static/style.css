@@ -3,6 +3,11 @@ body {
     font-family: "Trebuchet MS", sans-serif;
 }
 
+div.tweet a {
+    color: black;
+    text-decoration: none;
+}
+
 @media (max-width: 1000px) {
   .content {
     margin-left: 10%;
@@ -53,23 +58,27 @@ nav a:active {
     background: mediumpurple;
 }
 
-button.main {
-    background: mediumpurple;
-    color: white;
-    border: none;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+button {
+    background: white;
+    color: black;
+    border: 1px solid black;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border-radius: 5px;
     margin-top: 10px;
+    width: 20%;
 }
 
-button.main:hover {
-    opacity: 70%;
+button:hover {
+    background: lavender;
     cursor: pointer;
 }
 
+button:active{
+    background: white;
+}
 
 /* forms */
 
@@ -77,7 +86,8 @@ input {
     padding: 10px;
     border: solid 1px lightgrey;
     border-radius: 5px;
-    width: 100%;
+    width: 50%;
+    margin: 10px;
 }
 
 
@@ -91,4 +101,24 @@ div.tweet {
 
 .tweet-buttons {
     flex-direction: row;
+}
+
+button.like, button#show-comment, button.retweet {
+    min-width: 80px;
+    max-width: 80px;
+    margin: 10px;
+    text-align: center;
+    padding: 10px;
+    background: white;
+    color: black;
+    font-family: "Tahoma";
+    opacity: 100%;
+}
+
+button.like:hover { background-color: rgb(255, 214, 214); }
+button#show-comment:hover { background-color: rgb(195, 219, 255);}
+button.retweet:hover { background-color: rgb(171, 255, 205);}
+
+button.like:active, button#show-comment:active, button.retweet:active {
+    opacity: 50%;
 }

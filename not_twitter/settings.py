@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'tweets.apps.TweetsConfig',
+    'fontawesomefree',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

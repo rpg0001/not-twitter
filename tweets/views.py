@@ -8,7 +8,7 @@ from .models import Tweet, Comment
 
 def index(request):
     tweets = Tweet.objects.order_by('-date')
-    return render(request, 'tweets/tweets.html', {"title": "View all Tweets", "tweets": tweets})
+    return render(request, 'tweets/tweets.html', {"title": "Home", "tweets": tweets})
 
 
 def tweet(request, tweet_id):
