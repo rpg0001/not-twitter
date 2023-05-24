@@ -1,7 +1,7 @@
 {% extends '../base.html' %}
 {% block content %}
 
-<p class="subtitle">{{user}} <small>@{{user}}</small></p>
+<p class="subtitle">{{user.profile.display_name}} <small>@{{user}}</small></p>
 
 {% if user.profile.bio == "" %}
     <p class="faded">No bio for this user.</p>
@@ -11,7 +11,6 @@
 
 
 <small> <i class="fa-solid fa-calendar-days"></i> Joined {{ user.date_joined|date:"d M Y" }}</small>
-
 
 <br>
 

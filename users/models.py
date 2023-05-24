@@ -7,9 +7,13 @@ from django.dispatch import receiver
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(default="")
+    display_name = models.CharField(default="", max_length=150)
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
+
+        if self.display_name == "":
+            self.display_name = self.user.username
 
     def __str__(self):
         return self.user.username
