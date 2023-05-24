@@ -32,17 +32,19 @@
         <br>
 
     <div class="center comments">
-        <!-- post comment form  -->
+        <!-- post comment form   -->
         <form action="{% url 'comment' tweet.id %}" method="post" id="comment-form" style="display:none;">
             {%csrf_token%}
             <input value="{{request.path}}" name="path" hidden>
-            <input class="text-input" type="text" id="comment-text" name="text"></input>
-            <button type="submit" class="comment">Post comment</button>
+            <input class="text-input width-100" type="text" id="comment-text" name="text" required>
+            <button type="submit" class="main width-100">Post comment</button>
         </form>
 
 
+        ________
         <!-- view comments -->
         {% for comment in tweet.comment_set.all %}
+
             <div class="tweet comment-box">
                 <p> <!-- name, handle, date -->
                     <strong>Angry Person</strong>
@@ -52,21 +54,30 @@
                 <!-- the comment -->
                 <p>{{ comment }}</p>
             </div>
+        ________
+
         {% endfor %}
 
         <!-- show message if no comments -->
         {% if tweet.comment_set.count <= 0 %}
-            <p> No comments found :( </p>
+            <p> No comments found </p>
         {% endif %}
 
     </div>
 
     <!-- toggle comment box script -->
     <script>
+        function resetDisplay(element) {
+            element.style.display = "flex";
+            element.style.justifyContent = "center";
+            element.style.alignItems = "center";
+            element.style.flexDirection = "column";
+        }
+
         function showForm() {
             const form = document.getElementById("comment-form");
             if (form.style.display=="none") {
-                form.style.display = "initial";
+                resetDisplay(form);
             } else {
                 form.style.display = "none";
             }

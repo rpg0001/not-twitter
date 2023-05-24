@@ -6,7 +6,7 @@
     <p class="subtitle">Post a Tweet</p>
     <form action="{% url 'post' %}" method="post">
         {%csrf_token%}
-        <input class="tweet text-input" type="text" name="text" id="text" placeholder="What's happening?" required></input>
+        < class="tweet text-input" type="text" name="text" id="text" placeholder="What's happening?" required>
         <button class="main" type="submit">Tweet</button>
     </form>
 </div>
