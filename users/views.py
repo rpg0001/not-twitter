@@ -4,20 +4,25 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm, UserUpdateForm
 
-
+@login_required
 def profile(request):
     # TODO: get user tweets as context
     return render(request, 'users/profile.html', {'title': 'Profile', 'tweets': { "tweet": "hello"}})
 
-
+@login_required
 def profile_likes(request):
     # TODO: get user likes as context
     return render(request, 'users/profile.html', {'title': 'Profile', 'likes': {}})
 
-
+@login_required
 def profile_comments(request):
     # TODO: get user comments as context
     return render(request, 'users/profile.html', {'title': 'Profile', 'comments': {}})
+
+
+@login_required
+def settings(request):
+    return render(request, 'users/settings.html', {'title': 'Settings'})
 
 
 def signup(request):
@@ -50,7 +55,7 @@ def signin(request):
     else:
         return render(request, 'users/signin.html', {'title': 'Sign in'})
 
-
+@login_required
 def signout(request):
     logout(request)
     messages.success(request, "Logged out Successfully!")

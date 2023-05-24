@@ -1,46 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ title }}</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'style.css' %}" rel="stylesheet" type="text/css">
-    <link rel="shortcut icon" href="{% static 'favicon.png' %}" type="image/x-icon">
+    <head>
+        <meta charset="UTF-8">
+        <title>{{ title }}</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'style.css' %}" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="{% static 'favicon.png' %}" type="image/x-icon">
+        <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a id="nav-home" href="{% url 'tweets' %}">Home</a></li>
+                <li><a id="nav-explore" href="{% url 'tweets' %}">Explore</a></li>
 
-    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
-
-</head>
-<body>
-
-    <nav>
-        <ul>
-            <li><a href="{% url 'tweets' %}">Home</a></li>
-            <li><a href="{% url 'tweets' %}">Explore</a></li>
-            <li><a href="{% url 'tweets' %}">Settings</a></li>
-
-            &emsp;
-            {% if user.is_authenticated %}
-                <l1><a href="{% url 'profile' %}">Profile</a></l1>
-                 |
-                <l1><a href="{% url 'signout' %}">Logout</a></l1>
-            {% else %}
-                <l1><a href="{% url 'signin' %}">Sign in</a></l1>
-                 |
-                <l1><a href="{% url 'signup' %}">Sign up</a></l1>
-            {% endif %}
-
-        </ul>
-
-    </nav>
+                {% if user.is_authenticated %}
+                    <li><a id="nav-settings" href="{% url 'settings' %}">Settings</a></li>
+                    &emsp;
+                    <l1><a id="nav-profile" href="{% url 'profile' %}">Profile</a></l1>
+                     |
+                    <l1><a id="nav-logout" href="{% url 'signout' %}">Logout</a></l1>
+                {% else %}
+                    &emsp;
+                    <l1><a id="nav-signin" href="{% url 'signin' %}">Sign in</a></l1>
+                     |
+                    <l1><a id="nav-signup" href="{% url 'signup' %}">Sign up</a></l1>
+                {% endif %}
+            </ul>
+        </nav>
 
 
 
-    <div class="content center">
-        <h1 class="title">{{ title }}</h1>
-        {% block content %}
-    </div>
-  {% endblock %}
 
-</body>
+        <div class="content center">
+            <h1 class="title">{{ title }}</h1>
+            {% block content %}
+        </div>
+        {% endblock %}
+
+        <!-- navbar highlighting -->
+        {% if request.path == "/" %}
+        <style>#nav-home { background: whitesmoke } #nav-home:hover { background: white }</style>
+        <!--{% elif request.path == "" %}-->
+        <!--<style>#nav-explore { background: whitesmoke } #profile-tweets:hover { background: white }</style>-->
+        {% elif request.path == "/users/settings/" %}
+        <style>#nav-settings { background: whitesmoke } #nav-settings:hover { background: white }</style>
+        {% elif request.path == "/users/profile/" %}
+        <style>#nav-profile { background: whitesmoke } #nav-profile:hover { background: white }</style>
+        {% elif request.path == "/users/signin/" %}
+        <style>#nav-signin { background: whitesmoke } #nav-signin:hover { background: white }</style>
+        {% elif request.path == "/users/signup/" %}
+        <style>#nav-signup { background: whitesmoke } #nav-signup:hover { background: white }</style>
+        {% endif %}
+
+    </body>
 </html>

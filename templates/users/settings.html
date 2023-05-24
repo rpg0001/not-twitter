@@ -1,0 +1,15 @@
+{% extends '../base.html' %}
+{% block content %}
+
+
+<p class="subtitle">Account</p>
+  <form>
+    <label>Username</label>
+    <input disabled type="text" value="{{user.username}}">
+    <label>Email address</label>
+    <input disabled type="text" value="{{user.email}}">
+    <label>Password</label>
+    <input disabled type="password" value="password123">
+  </form>
+
+{% endblock %}

@@ -3,26 +3,36 @@
 
 <p class="subtitle">{{user}} <small>@{{user}}</small></p>
 
+{% if user.profile.bio == "" %}
+    <p class="faded">No bio for this user.</p>
+{% else %}
+    <p>{{user.profile.bio}}</p>
+{% endif %}
 
-<p class="faded">No bio for this user.</p>
-<small> <i class="fa-solid fa-calendar-days"></i> No join date for this user.</small>
+
+<small> <i class="fa-solid fa-calendar-days"></i> Joined {{ user.date_joined|date:"d M Y" }}</small>
+
 
 <br>
 
 <nav>
-    <a href="{% url 'profile' %}">Tweets</a>&emsp;&emsp;
-    <a href="{% url 'profile_comments' %}">Comments</a>&emsp;&emsp;
-    <a href="{% url 'profile_likes' %}">Likes</a>
+    <a id="profile-tweets" href="{% url 'profile' %}">Tweets</a>&emsp;&emsp;
+    <a id="profile-comments" href="{% url 'profile_comments' %}">Comments</a>&emsp;&emsp;
+    <a id="profile-likes" href="{% url 'profile_likes' %}">Likes</a>
 </nav>
-
 <br>
 
 {% if request.path == '/users/profile/' %}
     <p class="faded">No tweets found</p>
+    <style>#profile-tweets { background: whitesmoke } #profile-tweets:hover { background: white }</style>
 {% elif request.path == '/users/profile/comments' %}
     <p class="faded">No comments found</p>
+    <style>#profile-comments { background: whitesmoke } #profile-comments:hover { background: white }</style>
 {% elif request.path == '/users/profile/likes' %}
     <p class="faded">No likes found</p>
+    <style>#profile-likes { background: whitesmoke } #profile-likes:hover { background: white }</style>
 {% endif %}
+
+
 
 {% endblock %}
