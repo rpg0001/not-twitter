@@ -3,6 +3,13 @@ body {
     font-family: "Trebuchet MS", "Arial", sans-serif;
 }
 
+h1 {
+    font-family: "Garamond";
+    font-size: 64px;
+    font-weight: bold;
+    margin: 30px;
+}
+
 @media (max-width: 1000px) {
   .content {
     margin-left: 10%;

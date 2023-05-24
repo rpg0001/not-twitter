@@ -20,9 +20,9 @@ def post(request):
     if request.method == "POST":
         new_tweet = Tweet(text=request.POST["text"])
         new_tweet.save()
-        return HttpResponseRedirect("/tweets")
+        return HttpResponseRedirect("/")
     else:
-        return HttpResponseRedirect("/tweets")
+        return HttpResponseRedirect("/")
 
 
 def like(request, tweet_id):
@@ -33,7 +33,7 @@ def like(request, tweet_id):
         print(request.POST["path"])
         return HttpResponseRedirect(request.POST["path"])
     else:
-        return HttpResponseRedirect("/tweets")
+        return HttpResponseRedirect("/")
 
 
 def comment(request, tweet_id):
@@ -43,4 +43,4 @@ def comment(request, tweet_id):
         new_comment.save()
         return HttpResponseRedirect(request.POST["path"])
     else:
-        return HttpResponseRedirect("/tweets")
+        return HttpResponseRedirect("/")

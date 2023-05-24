@@ -41,7 +41,7 @@ def signin(request):
         if user is not None:
             login(request, user)
             messages.success(request, "Logged in Successfully!")
-            return redirect("/tweets")
+            return redirect("/")
         else:
             messages.error(request, "Incorrect username or password")
             return redirect("signin")
@@ -53,7 +53,7 @@ def signin(request):
 def signout(request):
     logout(request)
     messages.success(request, "Logged out Successfully!")
-    return redirect("/tweets")
+    return redirect("/")
 
 
 @login_required
