@@ -106,12 +106,11 @@ button:active{
 
 input {
     padding: 10px;
-    border: solid 1px lightgrey;
-    border-radius: 5px;
+    border: solid 1px black;
     width: 50%;
     margin: 10px;
+    font-family: "Trebuchet MS";
 }
-
 
 /* tweet */
 small {
