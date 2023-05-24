@@ -5,13 +5,13 @@ from .models import Profile
 
 
 class UserRegisterForm(UserCreationForm):
-    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'input', 'placeholder': "e.g. bobsmith123"}))
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'input', 'required': 'true'}))
     email = forms.EmailField(
-        widget=forms.TextInput(attrs={'class': 'input', 'placeholder': "e.g. bobsmith123@gmail.com", 'type': 'email'}))
+        widget=forms.TextInput(attrs={'class': 'input',  'type': 'email', 'required': 'true'}))
     password1 = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'input', 'placeholder': "*******", 'type': 'password'}))
+        widget=forms.TextInput(attrs={'class': 'input',  'type': 'password', 'required': 'true'}))
     password2 = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'input', 'placeholder': "*******", 'type': 'password'}))
+        widget=forms.TextInput(attrs={'class': 'input', 'type': 'password', 'required': 'true'}))
 
     class Meta:
         model = User

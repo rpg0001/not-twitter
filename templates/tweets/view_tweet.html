@@ -4,6 +4,8 @@
     <!-- back to home -->
     <a href="{% url 'tweets' %}">Back</a>
 
+    <p>Viewing Tweet #{{tweet.id}}.</p>
+
     <!-- the tweet -->
     {% include "tweets/tweet.html" %}
 

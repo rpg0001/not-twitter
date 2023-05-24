@@ -1,14 +1,14 @@
 {% extends '../base.html' %}
 {% block content %}
 
-<p>Sign in with an existing account</p>
-
+<p>Sign in with an existing account. <a href="{% url 'signup' %}">Not signed up?</a></p>
+<br>
 <form action="{% url 'signin' %}" method="POST">
     {%csrf_token%}
     <label for="username">Username</label>
-    <input type="text" name="username" id="username">
+    <input type="text" name="username" id="username" required>
     <label for="password">Password</label>
-    <input type="password" name="password" id="password">
+    <input type="password" name="password" id="password" required>
     <button type="submit">Sign in</button>
 </form>
 

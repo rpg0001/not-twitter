@@ -1,8 +1,8 @@
 {% extends '../base.html' %}
 {% block content %}
 
-<p>Create a new account</p>
-
+<p>Create a new account. <a href="{% url 'signin' %}">Already have one?</a></p>
+<br>
 <!-- display errors -->
 {% if form.errors %}
     <ul>
@@ -32,5 +32,5 @@
         <br>
         <button type="submit">Sign up</button>
 </form>
-
+<br>
 {%endblock%}

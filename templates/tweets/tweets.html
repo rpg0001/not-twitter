@@ -3,7 +3,7 @@
 
 <!-- post new tweet -->
 <div class="post-tweet center width-100">
-    <h3 class="subtitle">Post a Tweet</h3>
+    <p class="subtitle">Post a Tweet</p>
     <form action="{% url 'post' %}" method="post">
         {%csrf_token%}
         <input class="tweet text-input" type="text" name="text" id="text" placeholder="What's happening?" required></input>
@@ -15,7 +15,7 @@
 
 <div class="tweets-list center width-100">
 <!-- view all previous tweets -->
-    <h3 class="subtitle">View all Tweets</h3>
+    <p class="subtitle">View all Tweets</p>
       {% if tweets %}
           {% for tweet in tweets %}
                 {% include "tweets/tweet.html" %}

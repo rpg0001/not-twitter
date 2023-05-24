@@ -1,7 +1,18 @@
 {% extends '../base.html' %}
 {% block content %}
 
-<p>profile info here</p>
-{{ user }}
+<p class="subtitle">{{user}} <small>@{{user}}</small></p>
+
+
+<p class="faded">No bio for this user.</p>
+<small> <i class="fa-solid fa-calendar-days"></i> No join date for this user.</small>
+
+<br>
+
+<nav>
+    <a href="#">Tweets</a>&emsp;&emsp;
+    <a href="#">Comments</a>&emsp;&emsp;
+    <a href="#">Likes</a>
+</nav>
 
 {% endblock %}

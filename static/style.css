@@ -3,6 +3,25 @@ body {
     font-family: "Trebuchet MS", "Arial", sans-serif;
 }
 
+p a {
+    color: mediumpurple;
+    text-decoration: underline;
+    opacity: 70%;
+}
+
+p a:hover {
+    opacity: 40%;
+    cursor: pointer;
+}
+
+p.subtitle {
+    font-weight: bold;
+}
+
+p.faded {
+    color: darkgrey;
+}
+
 h1 {
     font-family: "Garamond";
     font-size: 64px;
