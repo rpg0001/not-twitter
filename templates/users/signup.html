@@ -4,18 +4,22 @@
 <p>Create a new account. <a href="{% url 'signin' %}">Already have one?</a></p>
 <br>
 <!-- display errors -->
+
 {% if form.errors %}
-    <ul>
+<div class="center width-100">
+    <ul class="error">
         {% for field_errors in form.errors.values %}
             {% for error in field_errors %}
-                <li>{{ error }}</li>
+                <li class="error"><i class="fa-solid fa-triangle-exclamation"></i> {{ error }}</li>
             {% endfor %}
         {% endfor %}
     </ul>
+</div>
+<br>
 {% endif %}
 
-<!-- the sign in form -->
 
+<!-- the sign in form -->
 <form method="POST">
         {% csrf_token %}
         <label>Username</label>

@@ -112,6 +112,18 @@ input {
     font-family: "Trebuchet MS";
 }
 
+li.error {
+    color: firebrick;
+    list-style-type: none;
+    text-align: center;
+}
+
+ul.error {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
 /* tweet */
 small {
     color: darkgrey;

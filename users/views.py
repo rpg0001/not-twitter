@@ -1,22 +1,23 @@
-from django.http import HttpResponse
-from django.shortcuts import render
-
-# Create your views here.
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.views.generic import DetailView
-
 from .forms import UserRegisterForm, UserUpdateForm
-from django.views import View
 
 
 def profile(request):
-    return render(request, 'users/profile.html', {'title': 'Profile'})
+    # TODO: get user tweets as context
+    return render(request, 'users/profile.html', {'title': 'Profile', 'tweets': { "tweet": "hello"}})
+
+
+def profile_likes(request):
+    # TODO: get user likes as context
+    return render(request, 'users/profile.html', {'title': 'Profile', 'likes': {}})
+
+
+def profile_comments(request):
+    # TODO: get user comments as context
+    return render(request, 'users/profile.html', {'title': 'Profile', 'comments': {}})
 
 
 def signup(request):
