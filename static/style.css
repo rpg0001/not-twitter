@@ -5,13 +5,12 @@ body {
 }
 
 p a {
-    color: mediumpurple;
+    color: lightgrey;
     text-decoration: underline;
-    opacity: 70%;
 }
 
 p a:hover {
-    opacity: 40%;
+    opacity: 70%;
     cursor: pointer;
 }
 
@@ -55,6 +54,30 @@ h1 {
     width: 100%;
 }
 
+/* buttons */
+
+button {
+    background: white;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 20%;
+}
+
+button:hover {
+    background: whitesmoke;
+    cursor: pointer;
+}
+
+button:active{
+    background: white;
+}
 
 /* navbar */
 nav {
@@ -73,34 +96,13 @@ nav a {
 }
 
 nav a:hover {
-    background: lavender;
+    background: whitesmoke;
 }
 
 nav a:active {
     background: white;
 }
 
-button {
-    background: white;
-    color: black;
-    border: 1px solid black;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-radius: 5px;
-    margin-top: 10px;
-    width: 20%;
-}
-
-button:hover {
-    background: lavender;
-    cursor: pointer;
-}
-
-button:active{
-    background: white;
-}
 
 /* forms */
 
