@@ -13,20 +13,20 @@
 
     <div class="tweet-buttons center">
         <!-- toggle comment box -->
-        <button id="show-comment" class="comment" onclick="showForm()"><i class="fa-solid fa-comment"></i></button>
+        <button id="show-comment" class="comment" onclick="showForm()" title="Show comment box"><i class="fa-solid fa-comment"></i></button>
 
         <!-- retweet button -->
         <form action="" method="post">
             {%csrf_token%}
             <input value="{{request.path}}" name="path" hidden>
-            <button type="submit" class="retweet"><i class="fa-solid fa-retweet"></i></button>
+            <button type="submit" class="retweet" title="Retweet"><i class="fa-solid fa-retweet"></i></button>
         </form>
 
         <!-- like button -->
         <form action="{% url 'like' tweet.id %}" method="post">
             {%csrf_token%}
             <input value="{{request.path}}" name="path" hidden>
-            <button type="submit" class="like"><i class="fa-solid fa-heart"></i></button>
+            <button type="submit" class="like" title="Like"><i class="fa-solid fa-heart"></i></button>
         </form>
     </div>
         <br>
@@ -37,7 +37,7 @@
             {%csrf_token%}
             <input value="{{request.path}}" name="path" hidden>
             <input class="text-input width-100" type="text" id="comment-text" name="text" placeholder="Thoughts?" required>
-            <button type="submit" class="main width-100">Post comment</button>
+            <button type="submit" class="main width-100" title="Post comment">Post comment</button>
         </form>
 
 
