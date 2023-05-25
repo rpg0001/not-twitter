@@ -29,3 +29,15 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ["-date"]
+
+
+class Retweet(models.Model):
+    tweet = models.ForeignKey(Tweet, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.tweet.text + "(retweet)"
+
+    class Meta:
+        ordering = ["-date"]
