@@ -106,12 +106,21 @@ nav a:active {
 
 /* forms */
 
-input {
+input, textarea {
     padding: 10px;
     border: solid 1px black;
     width: 50%;
     margin: 10px;
     font-family: "Trebuchet MS";
+}
+
+textarea {
+    resize: none;
+    height: 70px;
+}
+
+.helptext {
+    display: none;
 }
 
 li.error {
