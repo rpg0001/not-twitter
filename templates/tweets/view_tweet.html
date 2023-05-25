@@ -47,8 +47,8 @@
 
             <div class="tweet comment-box">
                 <p> <!-- name, handle, date -->
-                    <strong>Angry Person</strong>
-                    <small>@tinylittleman | {{ comment.date }}</small>
+                    <strong>{{ comment.user.profile.display_name }}</strong>
+                    <small>@{{ comment.user }}| {{ comment.date }}</small>
                 </p>
 
                 <!-- the comment -->

@@ -3,8 +3,8 @@
     <!-- main content -->
     <a class="tweet-card width-100" href="{% url 'tweet' tweet.id %}">
         <p>
-            <strong>Angry Person</strong>
-            <small>@tinylittleman | {{ tweet.date }}</small>
+            <strong>{{ tweet.user.profile.display_name }}</strong>
+            <small>@{{ tweet.user }} | {{ tweet.date }}</small>
         </p>
 
         <p>{{ tweet }}</p>
