@@ -16,6 +16,7 @@ p a:hover {
 
 p.subtitle {
     font-weight: bold;
+    font-size: 17px;
 }
 
 p.faded {

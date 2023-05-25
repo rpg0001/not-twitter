@@ -2,13 +2,20 @@
 {% block content %}
 
 
-<p class="subtitle">Account</p>
 
+<p class="subtitle">Profile</p>
 <form method="post">
   {% csrf_token %}
-  {{ user_form }}
   {{ profile_form }}
   <button type="submit">Save and update</button>
+</form>
+<br>
+<p class="subtitle">Account</p>
+<form>
+  <label>Username:</label>
+  <input type="text" value="{{user.username}}" disabled>
+  <label>Email address:</label>
+  <input type="email" value="{{user.email}}" disabled>
 </form>
 
 {% endblock %}

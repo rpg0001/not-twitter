@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from .forms import UserRegisterForm, ProfileUpdateForm
 
 
 @login_required
@@ -60,18 +60,19 @@ def signout(request):
 @login_required
 def settings(request):
     if request.method == 'POST':
-        user_form = UserUpdateForm(request.POST, instance=request.user)
+        # user_form = UserUpdateForm(request.POST, instance=request.user)
+        # user_form.is_valid() and
+        # user_form.save()
+        # user_form = UserUpdateForm(instance=request.user)
         profile_form = ProfileUpdateForm(request.POST, instance=request.user.profile)
-        if user_form.is_valid() and profile_form.is_valid():
-            user_form.save()
+        if profile_form.is_valid():
             profile_form.save()
-            messages.success(request, f'Your account has been updated!')
-            return redirect('settings')
+            messages.success(request, f'Your profile has been updated!')
+            return redirect('profile')
         else:
-            messages.error(request, 'There was an error updating your account')
+            messages.error(request, 'There was an error updating your profile')
     else:
-        user_form = UserUpdateForm(instance=request.user)
         profile_form = ProfileUpdateForm(instance=request.user.profile)
 
-    context = {'title': 'Settings', 'user_form': user_form, 'profile_form': profile_form}
+    context = {'title': 'Settings', 'profile_form': profile_form}
     return render(request, 'users/settings.html', context)

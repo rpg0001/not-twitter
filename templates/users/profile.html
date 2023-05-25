@@ -5,7 +5,7 @@
 <small>@{{user}}</small>
 
 {% if user.profile.bio == "" %}
-    <p class="faded">No bio for this user. <a href="{% url 'settings' %}">Edit</a></p>
+    <p class="faded">You haven't written a bio yet. <a href="{% url 'settings' %}">Edit</a></p>
 {% else %}
     <p>{{user.profile.bio}} <a href="{% url 'settings' %}"><a href="{% url 'settings' %}">Edit</a></p>
 {% endif %}

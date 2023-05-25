@@ -34,13 +34,17 @@ class UserRegisterForm(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2']
 
 
-class UserUpdateForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ('username', 'email')
-
-
 class ProfileUpdateForm(forms.ModelForm):
+    display_name = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'input',
+        'type': 'text',
+        'placeholder': Profile.display_name
+    }))
+    bio = forms.CharField(widget=forms.Textarea(attrs={
+        'class': 'input',
+        'type': 'text',
+    }))
+
     class Meta:
         model = Profile
         fields = ('display_name', 'bio')
