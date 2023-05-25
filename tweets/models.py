@@ -12,7 +12,7 @@ class Tweet(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
-        ordering = ["date"]
+        ordering = ["-date"]
 
     def __str__(self):
         return self.text

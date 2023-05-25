@@ -23,6 +23,9 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="d2c0aa55-05d9-4109-9b41-2bab715fe08e" dataset="main.auth_user" active-filter-id="959163cc-5854-4ae3-841b-0547d7e8ae33">
+      <filter id="959163cc-5854-4ae3-841b-0547d7e8ae33" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
     <filter-actions connection-id="d2c0aa55-05d9-4109-9b41-2bab715fe08e" dataset="main.tweets_tweet" active-filter-id="bcf6d025-8f5f-4a89-96f9-7af8213a26d8">
       <filter id="bcf6d025-8f5f-4a89-96f9-7af8213a26d8" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
     </filter-actions>

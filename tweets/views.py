@@ -21,7 +21,7 @@ def liked(user, tweet):
 
 
 def index(request):
-    tweets = Tweet.objects.order_by('-date')
+    tweets = Tweet.objects.all()
     return render(request, 'tweets/tweets.html', {"title": "Home", "tweets": tweets})
 
 
