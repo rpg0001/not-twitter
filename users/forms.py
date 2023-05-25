@@ -38,7 +38,6 @@ class ProfileUpdateForm(forms.ModelForm):
     display_name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'input',
         'type': 'text',
-        'placeholder': Profile.display_name
     }))
     bio = forms.CharField(widget=forms.Textarea(attrs={
         'class': 'input',
