@@ -1,9 +1,6 @@
 {% extends '../base.html' %}
 {% block content %}
 
-    <!-- back to home -->
-    <p><a href="{% url 'tweets' %}">Back</a></p>
-
     <p>Viewing Tweet #{{tweet.id}}.</p>
 
     <!-- the tweet -->
@@ -45,15 +42,7 @@
         <!-- view comments -->
         {% for comment in tweet.comment_set.all %}
 
-            <div class="tweet comment-box">
-                <p> <!-- name, handle, date -->
-                    <strong>{{ comment.user.profile.display_name }}</strong>
-                    <small>@{{ comment.user }}| {{ comment.date }}</small>
-                </p>
-
-                <!-- the comment -->
-                <p>{{ comment }}</p>
-            </div>
+            {% include "tweets/comment.html" %}
         ________
 
         {% endfor %}

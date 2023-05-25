@@ -25,10 +25,28 @@ ______
 
 
 {% if request.path == '/users/profile/' %}
-    <p class="faded">No tweets found</p>
+
+    {% if user.tweet_set.count <= 0 %}
+        <p class="faded">No tweets found</p>
+    {% else %}
+        {% for tweet in user.tweet_set.all %}
+            {% include "tweets/tweet.html" %}
+        {% endfor %}
+    {% endif %}
     <style>#profile-tweets { background: whitesmoke } #profile-tweets:hover { background: white }</style>
+
 {% elif request.path == '/users/profile/comments' %}
-    <p class="faded">No comments found</p>
+    {% if user.comment_set.count <= 0 %}
+        <p class="faded">No comments found</p>
+    {% else %}
+        {% for comment in user.comment_set.all %}
+            <br>
+        <a class="comment-link" href="{% url 'tweet' comment.tweet.id %}">
+            {% include "tweets/comment.html" %}
+        </a>
+            ______
+        {% endfor %}
+    {% endif %}
     <style>#profile-comments { background: whitesmoke } #profile-comments:hover { background: white }</style>
 {% elif request.path == '/users/profile/likes' %}
     <p class="faded">No likes found</p>
