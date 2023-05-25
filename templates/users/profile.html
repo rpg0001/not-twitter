@@ -1,7 +1,12 @@
 {% extends '../base.html' %}
 {% block content %}
 
-<p class="subtitle">{{user.profile.display_name}} <a title="Settings" href="{% url 'settings' %}">Edit</a></p>
+<p class="subtitle">{{user.profile.display_name}}
+    {% if user.is_superuser %}
+        <i title="Admin" class="fa-solid fa-shield-halved"></i>
+    {% endif %}
+    <a title="Settings" href="{% url 'settings' %}">Edit</a>
+</p>
 <small>@{{user}}</small>
 
 {% if user.profile.bio == "" %}

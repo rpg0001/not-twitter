@@ -17,5 +17,8 @@
   <label>Email address:</label>
   <input type="email" value="{{user.email}}" disabled>
 </form>
+{% if user.is_superuser %}
+      <p><i title="Admin" class="fa-solid fa-shield-halved"></i> This is an admin account.</p>
+{% endif %}
 
 {% endblock %}
