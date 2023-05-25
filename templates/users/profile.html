@@ -57,6 +57,7 @@
             {% for comment in user.comment_set.all %}
                 <br>
             <a class="comment-link" href="{% url 'tweet' comment.tweet.id %}">
+                <p class="faded"><small>replying to @{{comment.tweet.user}}</small></p>
                 {% include "tweets/comment.html" %}
             </a>
                 ______
