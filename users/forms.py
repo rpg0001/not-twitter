@@ -43,7 +43,11 @@ class ProfileUpdateForm(forms.ModelForm):
         'class': 'input',
         'type': 'text',
     }))
+    location = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'input',
+        'type': 'text',
+    }))
 
     class Meta:
         model = Profile
-        fields = ('display_name', 'bio')
+        fields = ('display_name', 'bio', 'location')

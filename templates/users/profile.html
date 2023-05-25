@@ -10,12 +10,19 @@
     <p>{{user.profile.bio}} <a href="{% url 'settings' %}"><a href="{% url 'settings' %}">Edit</a></p>
 {% endif %}
 
+<p><small>
+    <i class="fa-solid fa-calendar-days"></i> Joined {{ user.date_joined|date:"d M Y" }}
+    &nbsp;&nbsp;
+    {% if user.profile.location %}
+        <i class="fa-solid fa-location-dot"></i> {{ user.profile.location }}
+    {% else %}
+        <i class="fa-solid fa-location-dot"></i> No location set
+    {% endif %}
+    <a href="{% url 'settings' %}">Edit</a></p>
+</small>______</p>
 
-<small> <i class="fa-solid fa-calendar-days"></i> Joined {{ user.date_joined|date:"d M Y" }}&nbsp;&nbsp;<i class="fa-solid fa-location-dot"></i> No location set</small>
-<br>
-______
-<br>
-<br>
+
+
 <nav>
     <a id="profile-tweets" href="{% url 'profile' %}">Tweets</a>&emsp;&emsp;
     <a id="profile-comments" href="{% url 'profile_comments' %}">Comments</a>&emsp;&emsp;
