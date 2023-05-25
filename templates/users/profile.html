@@ -24,6 +24,8 @@ ______
 </nav>
 
 <section class="center width-100">
+
+    <!-- TAB #1/DEFAULT - DISPLAY USER'S TWEETS -->
     {% if request.path == '/users/profile/' %}
 
         {% if user.tweet_set.count <= 0 %}
@@ -35,7 +37,9 @@ ______
         {% endif %}
         <style>#profile-tweets { background: whitesmoke } #profile-tweets:hover { background: white }</style>
 
+    <!-- TAB #2 - DISPLAY USER'S COMMENTS -->
     {% elif request.path == '/users/profile/comments' %}
+
         {% if user.comment_set.count <= 0 %}
             <p class="faded">No comments found</p>
         {% else %}
@@ -48,8 +52,16 @@ ______
             {% endfor %}
         {% endif %}
         <style>#profile-comments { background: whitesmoke } #profile-comments:hover { background: white }</style>
+
+    <!-- TAB #3 - DISPLAY USER'S LIKES -->
     {% elif request.path == '/users/profile/likes' %}
-        <p class="faded">No likes found</p>
+        {% if user.likes.count <= 0 %}
+            <p class="faded">No likes found</p>
+        {% else %}
+            {% for tweet in user.likes.all %}
+                {% include "tweets/tweet.html" %}
+            {% endfor %}
+        {% endif %}
         <style>#profile-likes { background: whitesmoke } #profile-likes:hover { background: white }</style>
     {% endif %}
 </section>
