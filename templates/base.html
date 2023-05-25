@@ -13,20 +13,20 @@
     <body>
         <nav>
             <ul>
-                <li><a id="nav-home" href="{% url 'tweets' %}">Home</a></li>
-                <li><a id="nav-explore" href="{% url 'tweets' %}">Explore</a></li>
+                <li><a id="nav-home" title="Home" href="{% url 'tweets' %}">Home</a></li>
+                <li><a id="nav-explore" title="Explore" href="{% url 'tweets' %}">Explore</a></li>
 
                 {% if user.is_authenticated %}
-                    <li><a id="nav-settings" href="{% url 'settings' %}">Settings</a></li>
+                    <li><a id="nav-settings" title="Settings" href="{% url 'settings' %}">Settings</a></li>
                     &emsp;
-                    <l1><a id="nav-profile" href="{% url 'profile' %}">Profile</a></l1>
+                    <l1><a id="nav-profile" title="Profile" href="{% url 'profile' %}">Profile</a></l1>
                      |
-                    <l1><a id="nav-logout" href="{% url 'signout' %}">Logout</a></l1>
+                    <l1><a id="nav-logout" title="Logout" href="{% url 'signout' %}">Logout</a></l1>
                 {% else %}
                     &emsp;
-                    <l1><a id="nav-signin" href="{% url 'signin' %}">Sign in</a></l1>
+                    <l1><a id="nav-signin" title="Sign in" href="{% url 'signin' %}">Sign in</a></l1>
                      |
-                    <l1><a id="nav-signup" href="{% url 'signup' %}">Sign up</a></l1>
+                    <l1><a id="nav-signup" title="Sign up" href="{% url 'signup' %}">Sign up</a></l1>
                 {% endif %}
             </ul>
         </nav>

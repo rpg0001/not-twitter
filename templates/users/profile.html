@@ -1,13 +1,13 @@
 {% extends '../base.html' %}
 {% block content %}
 
-<p class="subtitle">{{user.profile.display_name}} <a href="{% url 'settings' %}">Edit</a></p>
+<p class="subtitle">{{user.profile.display_name}} <a title="Settings" href="{% url 'settings' %}">Edit</a></p>
 <small>@{{user}}</small>
 
 {% if user.profile.bio == "" %}
-    <p class="faded">You haven't written a bio yet. <a href="{% url 'settings' %}">Edit</a></p>
+    <p class="faded">You haven't written a bio yet. <a title="Settings" href="{% url 'settings' %}">Edit</a></p>
 {% else %}
-    <p>{{user.profile.bio}} <a href="{% url 'settings' %}"><a href="{% url 'settings' %}">Edit</a></p>
+    <p>{{user.profile.bio}} <a title="Settings" href="{% url 'settings' %}">Edit</a></p>
 {% endif %}
 
 <p><small>
@@ -18,7 +18,7 @@
     {% else %}
         <i class="fa-solid fa-location-dot"></i> No location set
     {% endif %}
-    <a href="{% url 'settings' %}">Edit</a></p>
+    <a href="{% url 'settings' %}" title="Settings" >Edit</a></p>
 </small>______</p>
 
 

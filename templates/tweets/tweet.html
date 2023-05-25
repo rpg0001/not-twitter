@@ -3,7 +3,12 @@
     <!-- main content -->
     <a class="tweet-card width-100" href="{% url 'tweet' tweet.id %}">
         <p>
-            <strong>{{ tweet.user.profile.display_name }}</strong>
+            <strong>
+                {{ tweet.user.profile.display_name }}
+                {% if tweet.user.is_superuser %}
+                    <i title="Admin" class="fa-solid fa-shield-halved"></i>
+                {% endif %}
+            </strong>
             <small>@{{ tweet.user }} | {{ tweet.date }}</small>
         </p>
 
