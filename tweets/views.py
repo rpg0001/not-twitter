@@ -1,9 +1,23 @@
 from django import template
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, Http404, HttpResponseRedirect, HttpRequest
 from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 from .models import Tweet, Comment
+
+
+# find out if the user has already liked a tweet
+# call in like and tweet
+def liked(user, tweet):
+    liked = False
+
+    for like in tweet.likes.all():
+        if like == user:
+            liked = True
+            break
+
+    return liked
 
 
 def index(request):
@@ -13,34 +27,43 @@ def index(request):
 
 def tweet(request, tweet_id):
     tweet = get_object_or_404(Tweet, pk=tweet_id)
-    return render(request, 'tweets/view_tweet.html', {"title": "View Tweet", "tweet": tweet})
+    already_liked = False
+    if request.user.is_authenticated:
+        already_liked = liked(request.user, tweet)
 
+    return render(request, 'tweets/view_tweet.html', {"title": "View Tweet", "tweet": tweet, "already_liked": already_liked })
 
+@login_required
 def post(request):
     if request.method == "POST":
-        new_tweet = Tweet(text=request.POST["text"], user=request.user)
-        new_tweet.save()
+        tweet = Tweet(text=request.POST["text"], user=request.user)
+        tweet.save()
         return HttpResponseRedirect("/")
     else:
         return HttpResponseRedirect("/")
 
-
+@login_required
 def like(request, tweet_id):
     if request.method == "POST":
-        liked_tweet = get_object_or_404(Tweet, pk=tweet_id)
-        liked_tweet.likes = liked_tweet.likes + 1
-        liked_tweet.save()
-        print(request.POST["path"])
-        return HttpResponseRedirect(request.POST["path"])
+        tweet = get_object_or_404(Tweet, pk=tweet_id)
+        already_liked = liked(request.user, tweet)
+
+        if not already_liked:
+            tweet.likes.add(request.user)
+
+        if already_liked:
+            tweet.likes.remove(request.user)
+
+        return HttpResponseRedirect(request.POST['path'])
     else:
         return HttpResponseRedirect("/")
 
-
+@login_required
 def comment(request, tweet_id):
     if request.method == "POST":
-        the_tweet = get_object_or_404(Tweet, pk=tweet_id)
-        new_comment = Comment(tweet=the_tweet, text=request.POST["text"], user=request.user)
-        new_comment.save()
+        tweet = get_object_or_404(Tweet, pk=tweet_id)
+        comment = Comment(tweet=tweet, text=request.POST["text"], user=request.user)
+        comment.save()
         return HttpResponseRedirect(request.POST["path"])
     else:
         return HttpResponseRedirect("/")

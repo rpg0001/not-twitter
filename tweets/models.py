@@ -8,7 +8,7 @@ from django.utils import timezone
 class Tweet(models.Model):
     text = models.CharField(max_length=144)
     date = models.DateTimeField(default=timezone.now)
-    likes = models.IntegerField(default=0)
+    likes = models.ManyToManyField(User, blank=True, related_name='likes')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:

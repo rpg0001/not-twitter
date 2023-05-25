@@ -23,7 +23,12 @@
         <form action="{% url 'like' tweet.id %}" method="post">
             {%csrf_token%}
             <input value="{{request.path}}" name="path" hidden>
-            <button type="submit" class="like" title="Like"><i class="fa-solid fa-heart"></i></button>
+
+            {% if already_liked %}
+                <button type="submit" class="like" title="Like"><i class="fa-solid fa-heart"></i></button>
+            {% else %}
+                <button type="submit" class="like" title="Like"><i class="fa-regular fa-heart"></i></button>
+            {% endif %}
         </form>
     </div>
         <br>
