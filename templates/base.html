@@ -13,10 +13,9 @@
     <body>
         <nav>
             <ul>
-                <li><a id="nav-home" title="Home" href="{% url 'tweets' %}">Home</a></li>
-                <li><a id="nav-explore" title="Explore - under construction" href="{% url 'tweets' %}">Explore</a></li>
-
                 {% if user.is_authenticated %}
+                     <li><a id="nav-home" title="Home" href="{% url 'tweets' %}">Home</a></li>
+                    <!--<li><a id="nav-explore" title="Explore - under construction" href="{% url 'tweets' %}">Explore</a></li>-->
                     <li><a id="nav-following" title="Following" href="{% url 'following_feed' %}">Following</a></li>
                         <div class="float-right">
                             <li><small>Signed in as {{user.email}}&nbsp;&nbsp;</small></li>

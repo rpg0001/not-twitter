@@ -1,6 +1,7 @@
 {% extends '../base.html' %}
 {% block content %}
 
+{% if user.is_authenticated %}
 <!-- post new tweet -->
 <div class="post-tweet center width-100">
     <p class="subtitle">Post a Tweet</p>
@@ -12,6 +13,7 @@
 </div>
 
 <br><br>
+{% endif %}
 
 <div class="tweets-list center width-100">
 <!-- view all previous tweets -->
