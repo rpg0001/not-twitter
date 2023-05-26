@@ -13,7 +13,12 @@ def profile(request):
 
 def profile_public(request, user_id):
     user = get_object_or_404(User, pk=user_id)
-    return render(request, 'users/profile_public.html', {'title': 'Profile', 'user_p': user})
+    already_following = False
+    for follower in user.profile.followers.all():
+        if follower.id == request.user.id:
+            already_following = True
+
+    return render(request, 'users/profile_public.html', {'title': 'Profile', 'user_p': user, 'already_following': already_following})
 
 
 def signup(request):

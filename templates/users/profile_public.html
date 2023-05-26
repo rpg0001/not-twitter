@@ -19,8 +19,23 @@
     &nbsp;&nbsp;
     {% if user_p.profile.location %}
         <i class="fa-solid fa-location-dot"></i> {{ user_p.profile.location }}
-    {% endif %}</p>
-</small>______</p>
+    {% endif %}
+
+</small>
+
+<p>Followers: {{ user_p.profile.followers.count }}&nbsp;&nbsp;Following: {{user_p.profile.following.count }}</p>
+<form action="{% url 'follow' user_p.id %}" method="post">
+    {% csrf_token %}
+    <input hidden name="path" value="{{request.path}}">
+    {% if already_following %}
+        <button type="submit">Unfollow</button>
+    {% else %}
+        <button type="submit">Follow</button>
+    {% endif %}
+</form>
+<br>
+______
+</p>
 
 
 
