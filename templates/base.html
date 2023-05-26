@@ -22,6 +22,7 @@
                     <l1><a id="nav-profile" title="Profile" href="{% url 'profile' %}">Profile</a></l1>
                      |
                     <l1><a id="nav-logout" title="Logout" href="{% url 'signout' %}">Logout</a></l1>
+                <p class="faded">{{user.email}}</p>
                 {% else %}
                     &emsp;
                     <l1><a id="nav-signin" title="Sign in" href="{% url 'signin' %}">Sign in</a></l1>

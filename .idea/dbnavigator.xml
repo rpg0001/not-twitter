@@ -17,18 +17,23 @@
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
-    <last-used-providers />
+    <last-used-providers>
+      <object-type object-type="TABLE" editor-provider="DATA" />
+    </last-used-providers>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files>
-      <object connection-id="d2c0aa55-05d9-4109-9b41-2bab715fe08e" object-ref="schemas/main/tables/tweets_tweet" />
-      <object connection-id="d2c0aa55-05d9-4109-9b41-2bab715fe08e" object-ref="schemas/main/tables/tweets_comment" />
-      <object connection-id="d2c0aa55-05d9-4109-9b41-2bab715fe08e" object-ref="schemas/main/tables/tweets_retweet" />
+      <object connection-id="d2c0aa55-05d9-4109-9b41-2bab715fe08e" object-ref="schemas/main/tables/users_profile_followers" />
+      <object connection-id="d2c0aa55-05d9-4109-9b41-2bab715fe08e" object-ref="schemas/main/tables/users_profile" />
+      <object connection-id="d2c0aa55-05d9-4109-9b41-2bab715fe08e" object-ref="schemas/main/tables/users_profile_following" />
     </open-files>
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="d2c0aa55-05d9-4109-9b41-2bab715fe08e" dataset="main.auth_user" active-filter-id="959163cc-5854-4ae3-841b-0547d7e8ae33">
       <filter id="959163cc-5854-4ae3-841b-0547d7e8ae33" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
+    <filter-actions connection-id="d2c0aa55-05d9-4109-9b41-2bab715fe08e" dataset="main.users_profile_followers" active-filter-id="a579a20c-7323-41f0-bbc5-a3f4d3fcc22e">
+      <filter id="a579a20c-7323-41f0-bbc5-a3f4d3fcc22e" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
     </filter-actions>
     <filter-actions connection-id="d2c0aa55-05d9-4109-9b41-2bab715fe08e" dataset="main.tweets_tweet_likes" active-filter-id="d9e142bb-92e4-4f2a-83a7-6ffe2dad7d1c">
       <filter id="d9e142bb-92e4-4f2a-83a7-6ffe2dad7d1c" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
@@ -44,6 +49,9 @@
     </filter-actions>
     <filter-actions connection-id="d2c0aa55-05d9-4109-9b41-2bab715fe08e" dataset="main.tweets_comment" active-filter-id="a0787e9e-529e-439f-9848-20e50dfb38a3">
       <filter id="a0787e9e-529e-439f-9848-20e50dfb38a3" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
+    <filter-actions connection-id="d2c0aa55-05d9-4109-9b41-2bab715fe08e" dataset="main.users_profile_following" active-filter-id="dd03b6da-1c61-4677-9457-388a60f4d42f">
+      <filter id="dd03b6da-1c61-4677-9457-388a60f4d42f" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
     </filter-actions>
   </component>
   <component name="DBNavigator.Project.ExecutionManager">

@@ -18,7 +18,8 @@ def profile_public(request, user_id):
         if follower.id == request.user.id:
             already_following = True
 
-    return render(request, 'users/profile_public.html', {'title': 'Profile', 'user_p': user, 'already_following': already_following})
+    return render(request, 'users/profile_public.html',
+                  {'title': 'Profile', 'user_p': user, 'already_following': already_following})
 
 
 def signup(request):
@@ -82,7 +83,7 @@ def settings(request):
 
 def follow(request, user_id):
     if request.method == 'POST':
-        user_to_follow = User.objects.get(pk=user_id)
+        user_to_follow = get_object_or_404(User, pk=user_id)
         already_following = False
 
         for followed_user in request.user.profile.following.all():
@@ -99,3 +100,15 @@ def follow(request, user_id):
             user_to_follow.profile.followers.remove(request.user)
 
     return redirect(request.POST['path'])
+
+
+def followers(request, user_id):
+    user_p = get_object_or_404(User, pk=user_id)
+    followers = user_p.profile.followers.all()
+    return render(request, 'users/users_list.html', {'title': 'Followers', 'user_list': followers, 'user_p': user_p})
+
+
+def following(request, user_id):
+    user_p = get_object_or_404(User, pk=user_id)
+    following = user_p.profile.following.all()
+    return render(request, 'users/users_list.html', {'title': 'Following', 'user_list': following, 'user_p': user_p})
