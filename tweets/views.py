@@ -1,12 +1,6 @@
-from itertools import chain
 
-from django import template
 from django.contrib.auth.decorators import login_required
-from django.db.models import QuerySet
-from django.http import HttpResponse, Http404, HttpResponseRedirect, HttpRequest
-from django.shortcuts import render, get_object_or_404
-
-# Create your views here.
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Tweet, Comment, Retweet
 
 
@@ -44,9 +38,9 @@ def post(request):
     if request.method == "POST":
         tweet = Tweet(text=request.POST["text"], user=request.user)
         tweet.save()
-        return HttpResponseRedirect("/")
+        return redirect("/")
     else:
-        return HttpResponseRedirect("/")
+        return redirect("/")
 
 @login_required
 def like(request, tweet_id):
@@ -60,9 +54,9 @@ def like(request, tweet_id):
         if already_liked:
             tweet.likes.remove(request.user)
 
-        return HttpResponseRedirect(request.POST['path'])
+        return redirect(request.POST['path'])
     else:
-        return HttpResponseRedirect("/")
+        return redirect("/")
 
 @login_required
 def comment(request, tweet_id):
@@ -70,9 +64,9 @@ def comment(request, tweet_id):
         tweet = get_object_or_404(Tweet, pk=tweet_id)
         comment = Comment(tweet=tweet, text=request.POST["text"], user=request.user)
         comment.save()
-        return HttpResponseRedirect(request.POST["path"])
+        return redirect(request.POST["path"])
     else:
-        return HttpResponseRedirect("/")
+        return redirect("/")
 
 
 @login_required
@@ -81,9 +75,9 @@ def retweet(request, tweet_id):
         tweet = get_object_or_404(Tweet, pk=tweet_id)
         retweet = Retweet(tweet=tweet, user=request.user)
         retweet.save()
-        return HttpResponseRedirect(request.POST["path"])
+        return redirect(request.POST["path"])
     else:
-        return HttpResponseRedirect("profile")
+        return redirect("profile")
 
 
 @login_required
@@ -91,3 +85,18 @@ def following(request):
     followed_users = request.user.profile.following.all()
     tweets = Tweet.objects.filter(user__in=followed_users)
     return render(request, 'tweets/following.html', {"title": "Following", "tweets": tweets})
+
+
+@login_required
+def delete_tweet(request, tweet_id):
+    tweet = get_object_or_404(Tweet, pk=tweet_id)
+    if request.method == 'POST':
+        if tweet.user.id == request.user.id:
+            tweet.delete()
+            print("deleted tweet")
+            return redirect(request.POST['path'])
+        print("not your tweet")
+        return redirect(request.POST['path'])
+    else:
+        print("wrong method")
+        return redirect('/')

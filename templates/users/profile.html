@@ -53,6 +53,12 @@ ______</p>
         {% else %}
             {% for tweet in user.tweet_set.all %}
                 {% include "tweets/tweet.html" %}
+                <form action="{% url 'delete_tweet' tweet.id %}" method="POST">
+                    {% csrf_token %}
+                    <input hidden name="path" value="{{request.path}}">
+                    <button class="link-button width-100 delete-button" type="submit" title="Delete Tweet">Delete this Tweet</button>
+                </form>
+                <br>
             {% endfor %}
         {% endif %}
         <style>#profile-tweets { background: whitesmoke } #profile-tweets:hover { background: white }</style>
