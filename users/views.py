@@ -73,3 +73,24 @@ def settings(request):
 
     context = {'title': 'Settings', 'profile_form': profile_form}
     return render(request, 'users/settings.html', context)
+
+
+def follow(request, user_id):
+    if request.method == 'POST':
+        user_to_follow = User.objects.get(pk=user_id)
+        already_following = False
+
+        for followed_user in request.user.profile.following.all():
+            if followed_user == user_to_follow:
+                already_following = True
+                break
+
+        if not already_following:
+            request.user.profile.following.add(user_to_follow)
+            user_to_follow.profile.followers.add(request.user)
+
+        if already_following:
+            request.user.profile.following.remove(user_to_follow)
+            user_to_follow.profile.followers.remove(request.user)
+
+    return redirect(request.POST['path'])

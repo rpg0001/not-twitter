@@ -10,6 +10,9 @@ class Profile(models.Model):
     display_name = models.CharField(default="", max_length=150)
     location = models.CharField(blank=True, max_length=150)
 
+    followers = models.ManyToManyField(User, blank=True, related_name='followers')
+    following = models.ManyToManyField(User, blank=True, related_name='following')
+
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
 
