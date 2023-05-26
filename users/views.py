@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -7,7 +8,15 @@ from .forms import UserRegisterForm, ProfileUpdateForm
 
 @login_required
 def profile(request):
-    return render(request, 'users/profile.html', {'title': 'Profile', 'tweets': { "tweet": "hello"}})
+    return render(request, 'users/profile.html', {'title': 'Profile'})
+
+
+def profile_public(request, user_id):
+    user = get_object_or_404(User, pk=user_id)
+    return render(request, 'users/profile_public.html', {'title': 'Profile', 'user_p': user})
+
+
+
 
 def signup(request):
     if request.method == 'POST':

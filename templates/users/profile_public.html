@@ -1,0 +1,98 @@
+{% extends '../base.html' %}
+{% block content %}
+
+<p class="subtitle">{{user_p.profile.display_name}}
+    {% if user_p.is_superuser %}
+        <i title="Admin" class="fa-solid fa-shield-halved"></i>
+    {% endif %}
+</p>
+<small>@{{user_p}}</small>
+
+{% if user_p.profile.bio == "" %}
+    <p class="faded">This user doesn't have a bio.</p>
+{% else %}
+    <p>{{user_p.profile.bio}}</p>
+{% endif %}
+
+<p><small>
+    <i class="fa-solid fa-calendar-days"></i> Joined {{ user_p.date_joined|date:"d M Y" }}
+    &nbsp;&nbsp;
+    {% if user_p.profile.location %}
+        <i class="fa-solid fa-location-dot"></i> {{ user_p.profile.location }}
+    {% endif %}</p>
+</small>______</p>
+
+
+
+<nav>
+    <a id="profile-tweets" href="{% url 'profile_public' user_p.id %}">Tweets</a>&emsp;&emsp;
+    <a id="profile-comments" href="{% url 'profile_public_comments' user_p.id %}">Comments</a>&emsp;&emsp;
+    <a id="profile-likes" href="{% url 'profile_public_likes' user_p.id %}">Likes</a>&emsp;&emsp;
+    <a id="profile-retweets" href="{% url 'profile_public_retweets' user_p.id%}">Retweets</a>
+</nav>
+
+<section class="center width-100">
+    <br>
+    <!-- TAB #1/DEFAULT - DISPLAY USER'S TWEETS -->
+    {% with  id_str=user_p.id|stringformat:"i" %}
+    {% if request.path == '/users/profile/'|add:id_str|add:'/' %}
+
+        {% if user_p.tweet_set.count <= 0 %}
+            <p class="faded">No tweets found</p>
+        {% else %}
+            {% for tweet in user_p.tweet_set.all %}
+                {% include "tweets/tweet.html" %}
+            {% endfor %}
+        {% endif %}
+        <style>#profile-tweets { background: whitesmoke } #profile-tweets:hover { background: white }</style>
+
+    <!-- TAB #2 - DISPLAY USER'S COMMENTS -->
+    {% elif request.path == '/users/profile/'|add:id_str|add:'/comments' %}
+        {% if user_p.comment_set.count <= 0 %}
+            <p class="faded">No comments found</p>
+        {% else %}
+            {% for comment in user_p.comment_set.all %}
+                <br>
+            <a class="comment-link" href="{% url 'tweet' comment.tweet.id %}">
+                <p class="faded"><small><i class="fa-solid fa-comment"></i> replying to @{{comment.tweet.user}}</small></p>
+                {% include "tweets/comment.html" %}
+            </a>
+                ______
+            {% endfor %}
+        {% endif %}
+        <style>#profile-comments { background: whitesmoke } #profile-comments:hover { background: white }</style>
+
+    <!-- TAB #3 - DISPLAY USER'S LIKES -->
+    {% elif request.path == '/users/profile/'|add:id_str|add:'/likes' %}
+        {% if user_p.likes.count <= 0 %}
+            <p class="faded">No likes found</p>
+        {% else %}
+            {% for tweet in user_p.likes.all %}
+                <small class="width-100" style="text-align: left"><i class="fa-solid fa-heart"></i> {{user_p.profile.display_name}} liked</small>
+                {% include "tweets/tweet.html" %}
+                <br>
+            {% endfor %}
+        {% endif %}
+        <style>#profile-likes { background: whitesmoke } #profile-likes:hover { background: white }</style>
+
+    <!-- TAB #4 - DISPLAY USER'S RETWEETS -->
+    <!-- they should be merged into the first one but ohh well lmao -->
+    {% elif request.path == '/users/profile/'|add:id_str|add:'/retweets' %}
+        {% if user_p.retweet_set.count <= 0 %}
+            <p class="faded">No retweets found</p>
+        {% else %}
+            {% for retweet in user_p.retweet_set.all %}
+                <small class="width-100" style="text-align: left"><i class="fa-solid fa-retweet"></i> {{ user_p.profile.display_name }} retweeted {{ retweet.date }}</small>
+                {% with tweet=retweet.tweet %}
+                    {% include "tweets/tweet.html" %}
+                {% endwith %}
+                <br>
+            {% endfor %}
+        {% endif %}
+        <style>#profile-retweets { background: whitesmoke } #profile-retweets:hover { background: white }</style>
+    {% endif %}
+    {%endwith%}
+</section>
+
+
+{% endblock %}
