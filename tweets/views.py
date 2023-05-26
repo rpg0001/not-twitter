@@ -2,6 +2,7 @@ from itertools import chain
 
 from django import template
 from django.contrib.auth.decorators import login_required
+from django.db.models import QuerySet
 from django.http import HttpResponse, Http404, HttpResponseRedirect, HttpRequest
 from django.shortcuts import render, get_object_or_404
 
@@ -82,3 +83,10 @@ def retweet(request, tweet_id):
         return HttpResponseRedirect(request.POST["path"])
     else:
         return HttpResponseRedirect("profile")
+
+
+@login_required
+def following(request):
+    followed_users = request.user.profile.following.all()
+    tweets = Tweet.objects.filter(user__in=followed_users)
+    return render(request, 'tweets/following.html', {"title": "Following", "tweets": tweets})

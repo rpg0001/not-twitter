@@ -1,0 +1,16 @@
+{% extends '../base.html' %}
+{% block content %}
+
+<div class="tweets-list center width-100">
+<!-- view all previous tweets -->
+    <p class="subtitle">Tweets by users you <a class="follow-link" href="{% url 'following' user.id %}">follow</a> </p>
+      {% if tweets %}
+          {% for tweet in tweets %}
+                {% include "tweets/tweet.html" %}
+          {% endfor %}
+      {% else %}
+          <p class="faded">No tweets found.</p>
+      {% endif %}
+</div>
+
+{% endblock %}

@@ -1,7 +1,23 @@
 {% extends '../base.html' %}
 {% block content %}
 <!-- display name of user whose following/followers list is being viewed -->
-<p class="subtitle">{{ user_p.profile.display_name }} </p><small> @{{ user_p }}</small>
+
+{% if 'following' in request.path %}
+    <p class="subtitle">
+        Users
+        <a href="{% url 'profile_public' user_p.id %}" class="profile-link">
+            {{ user_p.profile.display_name }} (<small>@{{user_p}}</small>)
+        </a>
+        is following
+    </p>
+{% elif 'followers' in request.path %}
+    <p class="subtitle">
+        Users following
+        <a href="{% url 'profile_public' user_p.id %}" class="profile-link">
+            {{ user_p.profile.display_name }} (<small>@{{user_p}}</small>)
+        </a>
+    </p>
+{% endif %}
 <br><br>
     {% if user_list.count <= 0 %}
         <p class="faded">None found</p>
