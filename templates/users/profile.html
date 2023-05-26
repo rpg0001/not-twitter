@@ -32,6 +32,7 @@
     <a class="follows-link" href="{% url 'following' user.id%}">Following: {{user.profile.following.count }}</a>
 </p>
 
+<p><a href="{% url 'profile_public' user.id %}">View public profile</a></p>
 ______</p>
 
 

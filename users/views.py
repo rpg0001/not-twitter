@@ -82,7 +82,7 @@ def settings(request):
 
 
 def follow(request, user_id):
-    if request.method == 'POST':
+    if request.method == 'POST' and not user_id == request.user.id:
         user_to_follow = get_object_or_404(User, pk=user_id)
         already_following = False
 

@@ -28,6 +28,8 @@
     &nbsp;&nbsp;
     <a class="follows-link" href="{% url 'following' user_p.id%}">Following: {{user_p.profile.following.count }}</a>
 </p>
+
+{% if not user.id == user_p.id %}
 <form action="{% url 'follow' user_p.id %}" method="post">
     {% csrf_token %}
     <input hidden name="path" value="{{request.path}}">
@@ -38,6 +40,10 @@
     {% endif %}
 </form>
 <br>
+{% else %}
+<p><a href="{% url 'profile' %}">View your profile</a></p>
+{% endif %}
+
 ______
 </p>
 
