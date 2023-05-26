@@ -1,7 +1,7 @@
 <div class="tweet-card width-100">
 
     <!-- main content -->
-    <a class="tweet-card width-100" href="{% url 'tweet' tweet.id %}">
+    <a class="profile-link" href="{% url 'profile_public' tweet.user.id %}">
         <p>
             <strong>
                 {{ tweet.user.profile.display_name }}
@@ -11,7 +11,9 @@
             </strong>
             <small>@{{ tweet.user }} | {{ tweet.date }}</small>
         </p>
+    </a>
 
+    <a class="tweet-link" href="{% url 'tweet' tweet.id %}">
         <p>{{ tweet }}</p>
 
         <p>
