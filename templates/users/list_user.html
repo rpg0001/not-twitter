@@ -1,14 +1,14 @@
-<a class="profile-link" href="{% url 'profile_public' this_user.id %}">
-    <p>
-        <strong>
-            {{ this_user.profile.display_name }}
-            {% if this_user.is_superuser %}
-                <i title="Admin" class="fa-solid fa-shield-halved"></i>
-            {% endif %}
-        </strong>
-        <small>@{{ this_user }}</small>
-    </p>
-    <p>
-        {{ this_user.profile.bio }}
-    </p>
-  </a>
+<div>
+    <a class="profile-link" href="{% url 'profile_public' this_user.id %}">
+        <p>
+            <strong>
+                {{ this_user.profile.display_name }}
+                {% if this_user.is_superuser %}
+                    <i title="Admin" class="fa-solid fa-shield-halved"></i>
+                {% endif %}
+            </strong>
+            <small>@{{ this_user }}</small>
+        </p>
+    </a>
+    {{ this_user.profile.bio }}
+</div>

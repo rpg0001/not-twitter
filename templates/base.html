@@ -19,7 +19,7 @@
                 {% if user.is_authenticated %}
                     <li><a id="nav-settings" title="Settings" href="{% url 'settings' %}">Settings</a></li>
                         <div class="float-right">
-                            <li class="faded">{{user.email}}&nbsp;&nbsp;</li>
+                            <li><small>{{user.email}}&nbsp;&nbsp;</small></li>
                             <l1><a id="nav-profile" title="Profile" href="{% url 'profile' %}">Profile</a></l1>
                              |
                             <l1><a id="nav-logout" title="Logout" href="{% url 'signout' %}">Logout</a></l1>

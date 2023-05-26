@@ -8,7 +8,7 @@ from .forms import UserRegisterForm, ProfileUpdateForm
 
 @login_required
 def profile(request):
-    return render(request, 'users/profile.html', {'title': 'Profile'})
+    return render(request, 'users/profile.html', {'title': 'My Profile'})
 
 
 def profile_public(request, user_id):

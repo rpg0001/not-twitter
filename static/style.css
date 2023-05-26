@@ -55,6 +55,13 @@ h1 {
     width: 100%;
 }
 
+.left {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+}
+
 /* buttons */
 
 button {
@@ -172,7 +179,7 @@ a.profile-link:hover, a.follows-link:hover {
     cursor: pointer;
 }
 
-a.follows-link {
+a.follows-link, a.profile-link {
     color: black;
     text-decoration: none;
 }
@@ -208,3 +215,4 @@ button.like:active, button#show-comment:active, button.retweet:active {
 .comment-link:hover {
     opacity: 70%;
 }
+

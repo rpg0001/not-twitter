@@ -2,15 +2,16 @@
 {% block content %}
 <!-- display name of user whose following/followers list is being viewed -->
 <p class="subtitle">{{ user_p.profile.display_name }} </p><small> @{{ user_p }}</small>
-<br>
-______
-<br>
+<br><br>
     {% if user_list.count <= 0 %}
         <p class="faded">None found</p>
     {% else %}
+        <div style="left">
         {% for this_user in user_list %}
             {% include "users/list_user.html" %}
+            <br><br>
         {% endfor %}
+        </div>
     {% endif %}
 
 {% endblock %}

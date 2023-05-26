@@ -1,9 +1,12 @@
 <div class="tweet comment-box">
-    <p> <!-- name, handle, date -->
-        <strong>{{ comment.user.profile.display_name }}</strong>
-        <small>@{{ comment.user }}| {{ comment.date }}</small>
-    </p>
+    <a class="profile-link" href="{% url 'profile_public' comment.user.id %}">
+        <p> <!-- name, handle, date -->
 
+            <strong>{{ comment.user.profile.display_name }}</strong>
+            <small>@{{ comment.user }}| {{ comment.date }}</small>
+
+        </p>
+    </a>
     <!-- the comment -->
     <p>{{ comment }}</p>
 </div>
