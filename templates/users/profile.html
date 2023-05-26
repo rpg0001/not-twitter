@@ -36,10 +36,9 @@
 </nav>
 
 <section class="center width-100">
-
+    <br>
     <!-- TAB #1/DEFAULT - DISPLAY USER'S TWEETS -->
     {% if request.path == '/users/profile/' %}
-
         {% if user.tweet_set.count <= 0 %}
             <p class="faded">No tweets found</p>
         {% else %}
@@ -51,14 +50,13 @@
 
     <!-- TAB #2 - DISPLAY USER'S COMMENTS -->
     {% elif request.path == '/users/profile/comments' %}
-
         {% if user.comment_set.count <= 0 %}
             <p class="faded">No comments found</p>
         {% else %}
             {% for comment in user.comment_set.all %}
                 <br>
             <a class="comment-link" href="{% url 'tweet' comment.tweet.id %}">
-                <p class="faded"><small>replying to @{{comment.tweet.user}}</small></p>
+                <p class="faded"><small><i class="fa-solid fa-comment"></i> replying to @{{comment.tweet.user}}</small></p>
                 {% include "tweets/comment.html" %}
             </a>
                 ______
@@ -72,7 +70,9 @@
             <p class="faded">No likes found</p>
         {% else %}
             {% for tweet in user.likes.all %}
+                <small class="width-100" style="text-align: left"><i class="fa-solid fa-heart"></i> {{user.profile.display_name}} liked</small>
                 {% include "tweets/tweet.html" %}
+                <br>
             {% endfor %}
         {% endif %}
         <style>#profile-likes { background: whitesmoke } #profile-likes:hover { background: white }</style>
@@ -80,15 +80,15 @@
     <!-- TAB #4 - DISPLAY USER'S RETWEETS -->
     <!-- they should be merged into the first one but ohh well lmao -->
     {% elif request.path == '/users/profile/retweets' %}
-        <br>
         {% if user.retweet_set.count <= 0 %}
             <p class="faded">No retweets found</p>
         {% else %}
             {% for retweet in user.retweet_set.all %}
-                <small><i class="fa-solid fa-retweet"></i> {{ retweet.date }}</small>
+                <small class="width-100" style="text-align: left"><i class="fa-solid fa-retweet"></i> {{ user.profile.display_name }} retweeted {{ retweet.date }}</small>
                 {% with tweet=retweet.tweet %}
                     {% include "tweets/tweet.html" %}
                 {% endwith %}
+                <br>
             {% endfor %}
         {% endif %}
         <style>#profile-retweets { background: whitesmoke } #profile-retweets:hover { background: white }</style>
