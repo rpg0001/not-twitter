@@ -13,7 +13,7 @@
         <button id="show-comment" class="comment" onclick="showForm()" title="Show comment box"><i class="fa-solid fa-comment"></i></button>
 
         <!-- retweet button -->
-        <form action="" method="post">
+        <form action="{% url 'retweet' tweet.id %}" method="post">
             {%csrf_token%}
             <input value="{{request.path}}" name="path" hidden>
             <button type="submit" class="retweet" title="Retweet"><i class="fa-solid fa-retweet"></i></button>

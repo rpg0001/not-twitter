@@ -37,7 +37,7 @@ class Retweet(models.Model):
     date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.tweet.text + "(retweet)"
+        return self.tweet.text
 
     class Meta:
         ordering = ["-date"]

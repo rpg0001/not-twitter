@@ -1,10 +1,12 @@
+from itertools import chain
+
 from django import template
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, Http404, HttpResponseRedirect, HttpRequest
 from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
-from .models import Tweet, Comment
+from .models import Tweet, Comment, Retweet
 
 
 # find out if the user has already liked a tweet
@@ -21,7 +23,8 @@ def liked(user, tweet):
 
 
 def index(request):
-    tweets = Tweet.objects.all()
+    #tweets = Tweet.objects.all() | Retweet.objects.all()
+    tweets = list(chain(Tweet.objects.all(), Retweet.objects.all()))
     return render(request, 'tweets/tweets.html', {"title": "Home", "tweets": tweets})
 
 
@@ -67,3 +70,14 @@ def comment(request, tweet_id):
         return HttpResponseRedirect(request.POST["path"])
     else:
         return HttpResponseRedirect("/")
+
+
+@login_required
+def retweet(request, tweet_id):
+    if request.method == "POST":
+        tweet = get_object_or_404(Tweet, pk=tweet_id)
+        retweet = Retweet(tweet=tweet, user=request.user)
+        retweet.save()
+        return HttpResponseRedirect(request.POST["path"])
+    else:
+        return HttpResponseRedirect("profile")
