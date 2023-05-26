@@ -16,8 +16,6 @@ def profile_public(request, user_id):
     return render(request, 'users/profile_public.html', {'title': 'Profile', 'user_p': user})
 
 
-
-
 def signup(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
@@ -48,11 +46,12 @@ def signin(request):
     else:
         return render(request, 'users/signin.html', {'title': 'Sign in'})
 
+
 @login_required
 def signout(request):
     logout(request)
     messages.success(request, "Logged out Successfully!")
-    return redirect("/")
+    return redirect("signin")
 
 
 @login_required
