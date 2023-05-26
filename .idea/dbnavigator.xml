@@ -22,11 +22,7 @@
     </last-used-providers>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="d2c0aa55-05d9-4109-9b41-2bab715fe08e" object-ref="schemas/main/tables/users_profile_followers" />
-      <object connection-id="d2c0aa55-05d9-4109-9b41-2bab715fe08e" object-ref="schemas/main/tables/users_profile" />
-      <object connection-id="d2c0aa55-05d9-4109-9b41-2bab715fe08e" object-ref="schemas/main/tables/users_profile_following" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="d2c0aa55-05d9-4109-9b41-2bab715fe08e" dataset="main.auth_user" active-filter-id="959163cc-5854-4ae3-841b-0547d7e8ae33">

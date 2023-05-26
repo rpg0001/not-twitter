@@ -164,10 +164,15 @@ a.tweet-link:hover {
     cursor: pointer;
 }
 
-a.profile-link:hover {
+a.profile-link:hover, a.follows-link:hover {
     text-decoration: underline;
     opacity: 70%;
     cursor: pointer;
+}
+
+a.follows-link {
+    color: black;
+    text-decoration: none;
 }
 
 .tweet-buttons {

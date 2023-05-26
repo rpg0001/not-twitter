@@ -23,7 +23,11 @@
 
 </small>
 
-<p>Followers: {{ user_p.profile.followers.count }}&nbsp;&nbsp;Following: {{user_p.profile.following.count }}</p>
+<p>
+    <a class="follows-link" href="{% url 'followers' user_p.id%}">Followers: {{ user_p.profile.followers.count }}</a>
+    &nbsp;&nbsp;
+    <a class="follows-link" href="{% url 'following' user_p.id%}">Following: {{user_p.profile.following.count }}</a>
+</p>
 <form action="{% url 'follow' user_p.id %}" method="post">
     {% csrf_token %}
     <input hidden name="path" value="{{request.path}}">

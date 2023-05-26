@@ -24,7 +24,15 @@
         <i class="fa-solid fa-location-dot"></i> No location set
     {% endif %}
     <a href="{% url 'settings' %}" title="Settings" >Edit</a></p>
-</small>______</p>
+</small>
+
+<p>
+    <a class="follows-link" href="{% url 'followers' user.id%}">Followers: {{ user.profile.followers.count }}</a>
+    &nbsp;&nbsp;
+    <a class="follows-link" href="{% url 'following' user.id%}">Following: {{user.profile.following.count }}</a>
+</p>
+
+______</p>
 
 
 
