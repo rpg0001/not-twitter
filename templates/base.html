@@ -18,16 +18,18 @@
 
                 {% if user.is_authenticated %}
                     <li><a id="nav-settings" title="Settings" href="{% url 'settings' %}">Settings</a></li>
-                    &emsp;
-                    <l1><a id="nav-profile" title="Profile" href="{% url 'profile' %}">Profile</a></l1>
-                     |
-                    <l1><a id="nav-logout" title="Logout" href="{% url 'signout' %}">Logout</a></l1>
-                <p class="faded">{{user.email}}</p>
+                        <div class="float-right">
+                            <li class="faded">{{user.email}}&nbsp;&nbsp;</li>
+                            <l1><a id="nav-profile" title="Profile" href="{% url 'profile' %}">Profile</a></l1>
+                             |
+                            <l1><a id="nav-logout" title="Logout" href="{% url 'signout' %}">Logout</a></l1>
+                    </div>
                 {% else %}
-                    &emsp;
-                    <l1><a id="nav-signin" title="Sign in" href="{% url 'signin' %}">Sign in</a></l1>
-                     |
-                    <l1><a id="nav-signup" title="Sign up" href="{% url 'signup' %}">Sign up</a></l1>
+                    <div class="float-right">
+                        <l1><a id="nav-signin" title="Sign in" href="{% url 'signin' %}">Sign in</a></l1>
+                         |
+                        <l1><a id="nav-signup" title="Sign up" href="{% url 'signup' %}">Sign up</a></l1>
+                    </div>
                 {% endif %}
             </ul>
         </nav>

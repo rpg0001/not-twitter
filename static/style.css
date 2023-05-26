@@ -19,7 +19,7 @@ p.subtitle {
     font-size: 17px;
 }
 
-p.faded {
+.faded {
     color: darkgrey;
 }
 
@@ -104,7 +104,9 @@ nav a:active {
     background: white;
 }
 
-
+.float-right {
+    float:right;
+}
 /* forms */
 
 input, textarea {
