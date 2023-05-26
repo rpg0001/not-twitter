@@ -24,7 +24,8 @@ def liked(user, tweet):
 
 def index(request):
     #tweets = Tweet.objects.all() | Retweet.objects.all()
-    tweets = list(chain(Tweet.objects.all(), Retweet.objects.all()))
+    #tweets = list(chain(Tweet.objects.all(), Retweet.objects.all()))
+    tweets = Tweet.objects.all()
     return render(request, 'tweets/tweets.html', {"title": "Home", "tweets": tweets})
 
 

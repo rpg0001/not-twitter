@@ -31,7 +31,8 @@
 <nav>
     <a id="profile-tweets" href="{% url 'profile' %}">Tweets</a>&emsp;&emsp;
     <a id="profile-comments" href="{% url 'profile_comments' %}">Comments</a>&emsp;&emsp;
-    <a id="profile-likes" href="{% url 'profile_likes' %}">Likes</a>
+    <a id="profile-likes" href="{% url 'profile_likes' %}">Likes</a>&emsp;&emsp;
+    <a id="profile-retweets" href="{% url 'profile_retweets' %}">Retweets</a>
 </nav>
 
 <section class="center width-100">
@@ -75,6 +76,22 @@
             {% endfor %}
         {% endif %}
         <style>#profile-likes { background: whitesmoke } #profile-likes:hover { background: white }</style>
+
+    <!-- TAB #4 - DISPLAY USER'S RETWEETS -->
+    <!-- they should be merged into the first one but ohh well lmao -->
+    {% elif request.path == '/users/profile/retweets' %}
+        <br>
+        {% if user.retweet_set.count <= 0 %}
+            <p class="faded">No retweets found</p>
+        {% else %}
+            {% for retweet in user.retweet_set.all %}
+                <small><i class="fa-solid fa-retweet"></i> {{ retweet.date }}</small>
+                {% with tweet=retweet.tweet %}
+                    {% include "tweets/tweet.html" %}
+                {% endwith %}
+            {% endfor %}
+        {% endif %}
+        <style>#profile-retweets { background: whitesmoke } #profile-retweets:hover { background: white }</style>
     {% endif %}
 </section>
 

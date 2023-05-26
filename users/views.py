@@ -7,18 +7,7 @@ from .forms import UserRegisterForm, ProfileUpdateForm
 
 @login_required
 def profile(request):
-    # TODO: get user tweets as context
     return render(request, 'users/profile.html', {'title': 'Profile', 'tweets': { "tweet": "hello"}})
-
-@login_required
-def profile_likes(request):
-    # TODO: get user likes as context
-    return render(request, 'users/profile.html', {'title': 'Profile', 'likes': {}})
-
-@login_required
-def profile_comments(request):
-    # TODO: get user comments as context
-    return render(request, 'users/profile.html', {'title': 'Profile', 'comments': {}})
 
 def signup(request):
     if request.method == 'POST':
