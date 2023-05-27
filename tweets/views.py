@@ -93,10 +93,19 @@ def delete_tweet(request, tweet_id):
     if request.method == 'POST':
         if tweet.user.id == request.user.id:
             tweet.delete()
-            print("deleted tweet")
             return redirect(request.POST['path'])
-        print("not your tweet")
         return redirect(request.POST['path'])
     else:
-        print("wrong method")
+        return redirect('/')
+
+
+@login_required
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, pk=comment_id)
+    if request.method == 'POST':
+        if comment.user.id == request.user.id:
+            comment.delete()
+            return redirect(request.POST['path'])
+        return redirect(request.POST['path'])
+    else:
         return redirect('/')

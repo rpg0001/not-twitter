@@ -52,11 +52,15 @@ ______</p>
             <p class="faded">No tweets found</p>
         {% else %}
             {% for tweet in user.tweet_set.all %}
+                <!--  include tweet template -->
                 {% include "tweets/tweet.html" %}
+                <!-- delete tweet button/form -->
                 <form action="{% url 'delete_tweet' tweet.id %}" method="POST">
                     {% csrf_token %}
                     <input hidden name="path" value="{{request.path}}">
-                    <button class="link-button width-100 delete-button" type="submit" title="Delete Tweet">Delete this Tweet</button>
+                    <button class="link-button width-100 delete-button" type="submit" title="Delete Tweet">
+                        <i class="fa-solid fa-trash-can" style="text-decoration: none">&nbsp;</i>Delete this Tweet
+                    </button>
                 </form>
                 <br>
             {% endfor %}
@@ -74,6 +78,14 @@ ______</p>
                 <p class="faded"><small><i class="fa-solid fa-comment"></i> replying to @{{comment.tweet.user}}</small></p>
                 {% include "tweets/comment.html" %}
             </a>
+                <form action="{% url 'delete_comment' comment.id %}" method="POST">
+                    {% csrf_token %}
+                    <input hidden name="path" value="{{request.path}}">
+
+                    <button class="link-button delete-button center" type="submit" title="Delete Comment">
+                        <p><i class="fa-solid fa-trash-can" style="text-decoration: none">&nbsp;</i>Delete this Comment</p>
+                    </button>
+                </form>
                 ______
             {% endfor %}
         {% endif %}
