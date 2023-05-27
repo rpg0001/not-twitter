@@ -14,17 +14,25 @@
         <nav>
             <ul>
                 {% if user.is_authenticated %}
-                     <li><a id="nav-home" title="Home" href="{% url 'tweets' %}">Home</a></li>
+                    <li><a id="nav-home" title="Home" href="{% url 'tweets' %}">Home</a></li>
                     <!--<li><a id="nav-explore" title="Explore - under construction" href="{% url 'tweets' %}">Explore</a></li>-->
                     <li><a id="nav-following" title="Following" href="{% url 'following_feed' %}">Following</a></li>
-                        <div class="float-right">
-                            <li><small>Signed in as {{user.email}}&nbsp;&nbsp;</small></li>
-                            <l1><a id="nav-profile" title="Profile" href="{% url 'profile' %}">Profile</a></l1>
-                             |
-                            <li><a id="nav-settings" title="Settings" href="{% url 'settings' %}">Settings</a></li>
-                             |
-                            <l1><a id="nav-logout" title="Logout" href="{% url 'signout' %}">Logout</a></l1>
-                    </div>
+                    <li>
+                        <form action="{% url 'search' %}" method="post">
+                            {%csrf_token%}
+                            <input class="search" type="text" name="query">
+                            <button class="search" type="submit" title="Search">Search</button>
+                        </form>
+                    </li>
+                    <li class="float-right">
+                        <li><small>Signed in as {{user.email}}&nbsp;&nbsp;</small></li>
+                        <li><a id="nav-profile" title="Profile" href="{% url 'profile' %}">Profile</a></li>
+                         |
+                        <li><a id="nav-settings" title="Settings" href="{% url 'settings' %}">Settings</a></li>
+                         |
+                        <li><a id="nav-logout" title="Logout" href="{% url 'signout' %}">Logout</a></li>
+                    </li>
+
                 {% else %}
                     <div class="float-right">
                         <l1><a id="nav-signin" title="Sign in" href="{% url 'signin' %}">Sign in</a></l1>

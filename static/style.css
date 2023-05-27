@@ -92,9 +92,15 @@ nav {
     padding: 10px;
 }
 
-nav li {
+nav li, nav li form {
     display: inline;
 }
+
+nav li form {
+    padding: 0;
+    margin: 0;
+}
+
 
 nav a {
     text-decoration: none;
@@ -143,6 +149,14 @@ ul.error {
     text-align: center;
     margin: 0;
     padding: 0;
+}
+
+input.search {
+    max-width: 20%;
+}
+
+button.search {
+    max-width: 10%;
 }
 
 /* tweet */

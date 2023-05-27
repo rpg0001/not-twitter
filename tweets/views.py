@@ -109,3 +109,15 @@ def delete_comment(request, comment_id):
         return redirect(request.POST['path'])
     else:
         return redirect('/')
+
+
+@login_required
+def search(request):
+    if request.method == 'POST':
+        query = request.POST['query']
+        # search for matching tweets
+        # TODO: implement a proper search
+        tweets = Tweet.objects.filter(text__icontains=query)
+        return render(request, 'tweets/search_results.html', {"title": "Search Results", "tweets": tweets, "query": query})
+    else:
+        return redirect("/")

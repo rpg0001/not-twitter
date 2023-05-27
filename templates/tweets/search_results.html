@@ -1,0 +1,15 @@
+{% extends '../base.html' %}
+{% block content %}
+
+<div class="tweets-list center width-100">
+    <p class="subtitle">Viewing search results for '{{query}}'</p>
+      {% if tweets %}
+          {% for tweet in tweets %}
+                {% include "tweets/tweet.html" %}
+          {% endfor %}
+      {% else %}
+          <p class="faded">No tweets found</p>
+      {% endif %}
+</div>
+
+{% endblock %}

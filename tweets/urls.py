@@ -11,5 +11,6 @@ urlpatterns = [
     path('retweet/<int:tweet_id>/', views.retweet, name="retweet"),
     path('following/', views.following, name='following_feed'),
     path('delete/<int:tweet_id>/', views.delete_tweet, name='delete_tweet'),
-    path('delete/comment/<int:comment_id>/', views.delete_comment, name='delete_comment')
+    path('delete/comment/<int:comment_id>/', views.delete_comment, name='delete_comment'),
+    path('search', views.search, name='search')
 ]
