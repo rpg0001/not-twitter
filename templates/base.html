@@ -11,8 +11,8 @@
         <link href="{% static 'fontawesomefree/css/regular.css' %}" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <nav>
-            <ul>
+        <nav class="center width-100">
+            <ul class="center width-100" style="flex-direction: row">
                 {% if user.is_authenticated %}
                     <li><a id="nav-home" title="Home" href="{% url 'tweets' %}">Home</a></li>
                     <!--<li><a id="nav-explore" title="Explore - under construction" href="{% url 'tweets' %}">Explore</a></li>-->
@@ -24,14 +24,15 @@
                             <button class="search" type="submit" title="Search">Search</button>
                         </form>
                     </li>
-                    <li class="float-right">
+                    <div class="buffer"></div>
+                    <div class="float-right">
                         <li><small>Signed in as {{user.email}}&nbsp;&nbsp;</small></li>
                         <li><a id="nav-profile" title="Profile" href="{% url 'profile' %}">Profile</a></li>
                          |
                         <li><a id="nav-settings" title="Settings" href="{% url 'settings' %}">Settings</a></li>
                          |
                         <li><a id="nav-logout" title="Logout" href="{% url 'signout' %}">Logout</a></li>
-                    </li>
+                    </div>
 
                 {% else %}
                     <div class="float-right">

@@ -120,6 +120,10 @@ nav a:active {
 .float-right {
     float:right;
 }
+
+.buffer {
+width: 30%;
+}
 /* forms */
 
 input, textarea {
@@ -152,11 +156,11 @@ ul.error {
 }
 
 input.search {
-    max-width: 20%;
+    min-width: 250px;
 }
 
 button.search {
-    max-width: 10%;
+    min-width: 85px;
 }
 
 /* tweet */
