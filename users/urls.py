@@ -1,5 +1,5 @@
 from django.urls import path
-
+from django.contrib.auth import views as auth_views
 from . import views
 
 urlpatterns = [
@@ -17,5 +17,6 @@ urlpatterns = [
     path('profile/<int:user_id>/retweets', views.profile_public, name='profile_public_retweets'),
     path('follow/<int:user_id>', views.follow, name='follow'),
     path('followers/<int:user_id>', views.followers, name='followers'),
-    path('following/<int:user_id>', views.following, name='following')
+    path('following/<int:user_id>', views.following, name='following'),
+    path('change-password/', auth_views.PasswordChangeView.as_view(), name='change_password'),
 ]

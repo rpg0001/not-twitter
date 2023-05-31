@@ -20,5 +20,6 @@
 {% if user.is_superuser %}
       <p><i title="Admin" class="fa-solid fa-shield-halved"></i> This is an admin account.</p>
 {% endif %}
+<p><a href="{% url 'change_password' %}">Click here to change password.</a></p>
 
 {% endblock %}

@@ -78,13 +78,19 @@ button {
     width: 20%;
 }
 
-button:hover {
+button:hover:enabled {
     background: whitesmoke;
     cursor: pointer;
 }
 
-button:active{
+button:active:enabled {
     background: white;
+}
+
+button:disabled, input:disabled {
+    background: whitesmoke;
+    color: dimgrey;
+    border: solid 1px dimgrey;
 }
 
 /* navbar */

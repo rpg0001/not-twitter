@@ -112,3 +112,4 @@ def following(request, user_id):
     user_p = get_object_or_404(User, pk=user_id)
     following = user_p.profile.following.all()
     return render(request, 'users/users_list.html', {'title': 'Following', 'user_list': following, 'user_p': user_p})
+
